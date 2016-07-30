@@ -1,7 +1,6 @@
 var io =  require('socket.io')();
 var db = require('./MongoConnector/DAO')
 var conf = require('./MongoConnector/Conf')
-var fw = require('./findWord')
 
 module.exports = function(options) {
   io.attach(options,{origins:conf.ip +':* http://' + conf.ip +':*'});

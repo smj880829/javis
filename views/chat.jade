@@ -1,0 +1,14 @@
+.chat(ng-controller='chatCtl')
+    .chat_mid(ng-scrollable="{scrollX:'none'}")
+        .ani-repeat(ng-repeat='log in chat_logs', align='{{log.ali}}')
+          .log
+            | {{log.message}}
+        |
+        #chat_bottom
+      |
+      .chat_bot
+        .col-md-11.chat_op
+          input.form-control(type='text', ng-model='message', my-enter='insertmsg_angular()')
+        |
+        .col-md-1.chat_op
+          button.btn.btn-primary.center-block(type='button', ng-click='insertmsg_angular()') &#xCC44;&#xD305; &#xBCF4;&#xB0B4;&#xAE30;
