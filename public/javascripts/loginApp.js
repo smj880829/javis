@@ -19,6 +19,10 @@ var app = angular.module('loginApp', [])
         });
       }
 
+      FB.login(function(response){
+        alert("asd")
+      });
+
       function statusChangeCallback(response) {
         console.log('statusChangeCallback');
         console.log(response);
@@ -54,7 +58,5 @@ var app = angular.module('loginApp', [])
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
-      FB.login(function(response){
-        alert("asd")
-    });
+
   }]);
