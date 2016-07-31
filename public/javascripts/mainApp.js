@@ -26,6 +26,12 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
       }
   }
 
+  $scope.logout = function() {
+    FB.logout(function(response){
+      $window.location.href = "/login";
+    });
+  }
+
 }]
 )
 
