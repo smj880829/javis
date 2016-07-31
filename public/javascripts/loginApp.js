@@ -5,6 +5,7 @@ var app = angular.module('loginApp', [])
 
       function get_me() {
         FB.api('/me', function(response) {
+            $rootScope.user.push({'name' : response.name,})
             console.log(response.name)
             console.log(response.email)
         });
@@ -32,7 +33,7 @@ var app = angular.module('loginApp', [])
           status: true,
           cookie: true,
           xfbml: true,
-          version: 'v2.2'
+          version: 'v2.7'
         });
         FB.getLoginStatus(function(response) {
           statusChangeCallback(response);
