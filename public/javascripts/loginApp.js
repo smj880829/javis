@@ -2,7 +2,6 @@ var app = angular.module('loginApp', [])
 
   app.run(['$rootScope', '$window',function($rootScope, $window) {
       $rootScope.user = {};
-      var _self = this;
 
       getUserInfo = function() {
         var _self = this;
@@ -14,16 +13,23 @@ var app = angular.module('loginApp', [])
         });
       }
 
+      function get_me() {
+        FB.api('/me', function(response) {
+          $rootScope.user = response;
+        });
+
       function statusChangeCallback(response) {
         console.log('statusChangeCallback');
         console.log(response);
         if (response.status === 'connected') {
-          _self.getUserInfo();
+          get_me();
           console.log($rootScope.user);
         } else if (response.status === 'not_authorized') {
+          $rootScope.user={};
           console.log($rootScope.user);
         } else {
-
+          $rootScope.user={};
+          console.log($rootScope.user);
         }
       }
 
