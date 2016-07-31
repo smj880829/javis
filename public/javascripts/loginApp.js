@@ -1,17 +1,15 @@
 var app = angular.module('loginApp', [])
 
-  app.config(function ($rootScope) {
-    $rootScope.user = new Object();
-  })
-
   app.run(['$rootScope', '$window',function($rootScope, $window) {
+    $rootScope.user = {};
 
       function get_me() {
         FB.api('/me?fields=name,email', function(response) {
+          $rootScope.$apply(function() {
             $rootScope.user.name  = response.name;
             $rootScope.user.id  = response.id;
             $rootScope.user.email  = response.email;
-
+          }
         });
       }
 
