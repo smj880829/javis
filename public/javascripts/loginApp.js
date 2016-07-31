@@ -3,12 +3,10 @@ var app = angular.module('loginApp', [])
   app.run(['$rootScope', '$window',function($rootScope, $window) {
     $rootScope.user = {};
 
-      function get_me() {
-        var _self = this;
+      var get_me = function(callback) {
         FB.api('/me?fields=name,email', function(response) {
-          $rootScope.$apply(function() {
-            $rootScope.user = _self.user = response;
-          })
+          $rootScope.user  = response;
+            return callback();
         });
       }
 
