@@ -6,7 +6,7 @@ var app = angular.module('loginApp', [])
       function get_me() {
         FB.api('/me', function(response) {
             console.log(response.name)
-            console.log(response.email)
+            console.log(response.id)
         });
       }
 
