@@ -38,7 +38,7 @@ body :-ms-input-placeholder {
 }
 .wrapper {
   background: #50a3a2;
-  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
+  background: -webkit-linear-gradient(top left, #76daff 0%, #0ebeff 100%);
   background: linear-gradient(to bottom right, #76daff 0%, #0ebeff 100%);
   position: absolute;
   top: 50%;
@@ -97,7 +97,7 @@ form input:hover {
 form input:focus {
   background-color: white;
   width: 300px;
-  color: #53e3a6;
+  color: #76daff;
 }
 form button {
   -webkit-appearance: none;
