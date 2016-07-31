@@ -1,13 +1,24 @@
-var app = angular.module('loginApp', [])
+var app = angular.module('mainApp', [])
 
   app.run(['$rootScope', '$window',function($rootScope, $window) {
+    $rootScope.user = {};
+
+      function get_me() {
+        FB.api('/me?fields=name,email', function(response) {
+            $rootScope.user = response;
+        });
+      }
+
       function statusChangeCallback(response) {
+        console.log('statusChangeCallback');
+        console.log(response);
         if (response.status === 'connected') {
-          $window.location.href = "/";
+          get_me();
+
         } else if (response.status === 'not_authorized') {
-
+          $window.location.href = "/login";
         } else {
-
+          $window.location.href = "/login";
         }
       }
 
@@ -31,6 +42,5 @@ var app = angular.module('loginApp', [])
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-
 
   }]);
