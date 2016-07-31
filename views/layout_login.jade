@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title 어서와용
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    link(rel='stylesheet', href='/stylesheets/login.css')
+    script(type='text/javascript').
+      function next(){
+      $('form').attr({action:'/login', method:'post'}).submit();
+      }
+      $(document).ready(function() {
+      $("#login-button").click(function(event){
+      event.preventDefault();
+      $("#title").html("Login.....");
+      $('form').fadeOut(500);
+      $('.wrapper').addClass('form-success');
+      setTimeout("next()", 5000);
+      });
+      });
+  body
+    block content
