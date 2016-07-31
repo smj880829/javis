@@ -31,7 +31,8 @@ var app = angular.module('loginApp', [])
           appId: '706997686105976',
           status: true,
           cookie: true,
-          xfbml: true
+          xfbml: true,
+          version: 'v2.2'
         });
 
       };
