@@ -9,7 +9,7 @@ var app = angular.module('loginApp', [])
             $rootScope.user.name  = response.name;
             $rootScope.user.id  = response.id;
             $rootScope.user.email  = response.email;
-          }
+          })
         });
       }
 
