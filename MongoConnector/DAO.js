@@ -12,6 +12,7 @@ function find(col,filter,callback){
 })
 }
 
+
 function find_sort_limit(col,filter,sortOP,limitOP,callback){
   mongo.connect(db_Config.url,function(err,db){
     if (err) throw err
@@ -34,6 +35,17 @@ function insert(col,query,callback){
 })
 }
 
+function save(col,query,callback){
+  mongo.connect(db_Config.url,function(err,db){
+    if (err) throw err
+    var dbCol = db.collection(col)
+    dbCol.save(query,function(err) {
+      if (err) throw err
+      db.close()
+    })
+})
+}
+
 function update(col,filter,query,callback){
   mongo.connect(db_Config.url,function(err,db){
     if (err) throw err
@@ -49,4 +61,5 @@ function update(col,filter,query,callback){
 exports.find = find;
 exports.insert = insert;
 exports.update = update;
+exports.save = save;
 exports.find_sort_limit = find_sort_limit;

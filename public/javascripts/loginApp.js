@@ -54,4 +54,7 @@ var app = angular.module('loginApp', [])
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
+      FB.login(function(response){
+        alert("asd")
+    });
   }]);
