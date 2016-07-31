@@ -4,11 +4,10 @@ var app = angular.module('loginApp', [])
     $rootScope.user = {};
 
       function get_me() {
+        var _self = this;
         FB.api('/me?fields=name,email', function(response) {
           $rootScope.$apply(function() {
-            $rootScope.user.name  = response.name;
-            $rootScope.user.id  = response.id;
-            $rootScope.user.email  = response.email;
+            $rootScope.user = _self.user = response;
           })
         });
       }
