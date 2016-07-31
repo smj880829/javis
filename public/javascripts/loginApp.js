@@ -14,7 +14,8 @@ var app = angular.module('loginApp', [])
         console.log(response);
         if (response.status === 'connected') {
           get_me();
-          console.log($rootScope.user);
+          console.log($rootScope.user.name);
+          console.log($rootScope.user.email);
         } else if (response.status === 'not_authorized') {
           $rootScope.user={};
           console.log($rootScope.user);
