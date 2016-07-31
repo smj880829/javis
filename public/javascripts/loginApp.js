@@ -5,7 +5,6 @@ var app = angular.module('loginApp', [])
 
       function get_me() {
         FB.api('/me', function(response) {
-            $rootScope.user.push({'name' : response.name,})
             console.log(response.name)
             console.log(response.email)
         });
