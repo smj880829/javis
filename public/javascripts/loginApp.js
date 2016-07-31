@@ -5,9 +5,10 @@ var app = angular.module('loginApp', [])
 
       function get_me() {
         FB.api('/me?fields=name,email', function(response) {
-            console.log(response.name)
-            console.log(response.id)
-            console.log(response.email)
+            $rootScope.user.name  = response.name;
+            $rootScope.user.id  = response.id;
+            $rootScope.user.email  = response.email;
+
         });
       }
 
@@ -17,10 +18,19 @@ var app = angular.module('loginApp', [])
         if (response.status === 'connected') {
           get_me();
 
+          console.log($rootScope.user.name)
+          console.log($rootScope.user.id)
+          console.log($rootScope.user.email)
         } else if (response.status === 'not_authorized') {
-
+          $rootScope.user = {};
+          console.log($rootScope.user.name)
+          console.log($rootScope.user.id)
+          console.log($rootScope.user.email)
         } else {
-
+          $rootScope.user = {};
+          console.log($rootScope.user.name)
+          console.log($rootScope.user.id)
+          console.log($rootScope.user.email)
         }
       }
 
