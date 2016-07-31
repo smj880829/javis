@@ -12,8 +12,8 @@ nav.navbar.navbar-inverse.navbar-fixed-top(ng-show='nav_show')
         li
           a(href='#profile') PROFILE
         li
-          a(onclick='FB.logout()') CHAT
+          a(ng-click='chatgotoBottom()') CHAT
         li
-          a(href='/logout') LOG OUT
+          a(onclick='FB.logout()') LOG OUT
       form.navbar-form.navbar-right
         input.form-control(type='text', placeholder='Search...')
