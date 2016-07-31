@@ -1,8 +1,10 @@
 doctype html
-html
+html(ng-app='loginApp')
   head
     title 어서와용
     script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js')
+    link(rel='stylesheet', href='/javascripts/loginApp.js')
     link(rel='stylesheet', href='/stylesheets/login.css')
     script(type='text/javascript').
       function next(){
