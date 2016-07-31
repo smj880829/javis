@@ -1,7 +1,7 @@
 extends layout_login
 
 block content
-    .wrapper
+    .wrapper(ng-controller='loginCtl')
       .container
         h1= title
         form.form
@@ -12,6 +12,8 @@ block content
           button(onclick='FB.login()') FaceBook Login
           br
           button(onclick='FB.logout()') FaceBook Loout
+          br
+          button(onclick='check()') wow
     ul.bg-bubbles
       li
       li

@@ -1,12 +1,21 @@
 var app = angular.module('loginApp', [])
 
+    app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $window,$rootScope) {
+
+      $scope.check = function() {
+          $window.alert($rootScope.user.name + $rootScope.user.id + $rootScope.user.email)
+      }
+
+    }]
+    )
+
+
   app.run(['$rootScope', '$window',function($rootScope, $window) {
     $rootScope.user = {};
 
-      var get_me = function(callback) {
+      function get_me() {
         FB.api('/me?fields=name,email', function(response) {
-          $rootScope.user  = response;
-            return callback();
+            $rootScope.user = response;
         });
       }
 
@@ -16,19 +25,11 @@ var app = angular.module('loginApp', [])
         if (response.status === 'connected') {
           get_me();
 
-          console.log($rootScope.user.name)
-          console.log($rootScope.user.id)
-          console.log($rootScope.user.email)
         } else if (response.status === 'not_authorized') {
           $rootScope.user = {};
-          console.log($rootScope.user.name)
-          console.log($rootScope.user.id)
-          console.log($rootScope.user.email)
+
         } else {
           $rootScope.user = {};
-          console.log($rootScope.user.name)
-          console.log($rootScope.user.id)
-          console.log($rootScope.user.email)
         }
       }
 
