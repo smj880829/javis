@@ -100,6 +100,7 @@ form input:focus {
   color: #76daff;
 }
 form button {
+  margin-bottom: 5px;
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
