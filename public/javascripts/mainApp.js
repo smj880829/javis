@@ -130,3 +130,40 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       }(document, 'script', 'facebook-jssdk'));
 
   }]);
+
+  app.factory('socket', function ($rootScope) {
+    var socket = io.connect('http://54.199.240.31/');
+    return {
+      on: function (eventName, callback) {
+        socket.on(eventName, function () {
+          var args = arguments;
+          $rootScope.$apply(function () {
+            callback.apply(socket, args);
+          });
+        });
+      },
+      emit: function (eventName, data, callback) {
+        socket.emit(eventName, data, function () {
+          var args = arguments;
+          $rootScope.$apply(function () {
+            if (callback) {
+              callback.apply(socket, args);
+            }
+          });
+        })
+      }
+    };
+  })
+    app.directive('myEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.myEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    })
