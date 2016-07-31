@@ -1,5 +1,16 @@
 var app = angular.module('loginApp', [])
 
+app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $window,$rootScope) {
+
+  $scope.login = function() {
+    FB.login(function(response){
+      $window.location.href = "/";
+    });
+  }
+
+}]
+)
+
   app.run(['$rootScope', '$window',function($rootScope, $window) {
       function statusChangeCallback(response) {
         if (response.status === 'connected') {
@@ -31,6 +42,5 @@ var app = angular.module('loginApp', [])
         js.src = "//connect.facebook.net/en_US/sdk.js";
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-
 
   }]);
