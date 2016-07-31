@@ -14,9 +14,7 @@ script.
       }
       }
 
-      FB.login(function(response){
-      
-      });
+
 
       function checkLoginState() {
       FB.getLoginStatus(function(response) {
@@ -36,6 +34,10 @@ script.
       statusChangeCallback(response);
       });
       };
+
+      FB.login(function(response){
+
+      });
 
       (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
