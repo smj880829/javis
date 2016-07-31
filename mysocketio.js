@@ -16,20 +16,20 @@ io.on('connection', function (socket) {
 
   socket.on('insert_chatlog', function(data){
     data.insert_time = new Date()
-    db.insert(data,function(re){
+    db.insert('chat_logs',data,function(re){
     })
 
     socket.broadcast.emit('new_chat_log', data);
   })
 
   socket.on('init_chat_log', function(data){
-    db.find_sort_limit({},{'insert_time':-1},15,function(re){
+    db.find_sort_limit('chat_logs',{},{'insert_time':-1},15,function(re){
       socket.emit('chat_logs', re);
     })
   });
 
   socket.on('find_chatlog', function(data){
-    db.find_sort_limit({},{'insert_time':-1},15,function(re){
+    db.find_sort_limit('chat_logs',{},{'insert_time':-1},15,function(re){
       socket.emit('chat_logs', re);
     })
   })
