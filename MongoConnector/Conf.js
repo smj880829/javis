@@ -3,4 +3,3 @@ var port = 27017
 var db = "javis"
 var url = "mongodb://" + ip + ":" + port + "/" + db
 exports.url = url
-exports.col = col
