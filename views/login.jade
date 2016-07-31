@@ -1,6 +1,8 @@
 extends layout_login
 
 block content
+    extends FB
+
     .wrapper
       .container
         h1= title
@@ -8,6 +10,7 @@ block content
           input(type='text', placeholder='Username', name='email')
           input(type='password', placeholder='Password', name='password')
           button#login-button(type='submit') Login
+          button(onclick='FB.login()') FaceBook Login
     ul.bg-bubbles
       li
       li
