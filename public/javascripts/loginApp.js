@@ -1,15 +1,5 @@
 var app = angular.module('loginApp', [])
 
-    app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $window,$rootScope) {
-
-      $scope.check = function() {
-          $window.alert($rootScope.user.name + $rootScope.user.id + $rootScope.user.email)
-      }
-
-    }]
-    )
-
-
   app.run(['$rootScope', '$window',function($rootScope, $window) {
     $rootScope.user = {};
 
@@ -19,21 +9,15 @@ var app = angular.module('loginApp', [])
         });
       }
 
-      FB.login(function(response){
-        alert("asd")
-      });
-
       function statusChangeCallback(response) {
         console.log('statusChangeCallback');
         console.log(response);
         if (response.status === 'connected') {
-          get_me();
-
+          $window.location.href = "/";
         } else if (response.status === 'not_authorized') {
-          $rootScope.user = {};
-
+          $window.location.href = "/login";
         } else {
-          $rootScope.user = {};
+          $window.location.href = "/login";
         }
       }
 
