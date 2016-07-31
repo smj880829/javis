@@ -19,8 +19,9 @@ var app = angular.module('loginApp', [])
         console.log(response);
         if (response.status === 'connected') {
           _self.getUserInfo();
+          console.log($rootScope.user);
         } else if (response.status === 'not_authorized') {
-
+          console.log($rootScope.user);
         } else {
 
         }
