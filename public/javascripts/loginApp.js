@@ -4,19 +4,12 @@ var app = angular.module('loginApp', [])
       $rootScope.user = {};
 
       getUserInfo = function() {
-        var _self = this;
-
-        FB.api('/me', function(res) {
-          $rootScope.$apply(function() {
-            $rootScope.user = _self.user = res;
-          });
-        });
-      }
 
       function get_me() {
         FB.api('/me', function(response) {
           $rootScope.user = response;
         });
+      }
 
       function statusChangeCallback(response) {
         console.log('statusChangeCallback');
