@@ -1,4 +1,4 @@
-var app = angular.module('mainApp', [])
+var app = angular.module('mainApp',  ['ngRoute','ngAnimate','ngScrollable'])
 
 app.config(function ($routeProvider) {
 //Module의 config API를 사용하면 서비스 제공자provider에 접근할 수 있다. 여기선 $route 서비스 제공자를 인자로 받아온다.
@@ -26,6 +26,63 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
       }
   }
 
+}]
+)
+
+app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
+    $scope.chat_logs = [];
+
+    $scope.gotoBottom = function() {
+      $location.hash('chat_bottom');
+      $anchorScroll();
+    }
+
+    $scope.init_chat = function() {
+        socket.emit('init_chat_log');
+    }
+
+    $rootScope.$on("init_chat", function(){
+      $scope.init_chat();
+    });
+
+    $rootScope.$on("del_chat", function(){
+      $scope.chat_logs.length = 0;
+    });
+
+
+
+  $scope.insertmsg_angular = function(){
+      socket.emit('insert_chatlog',{'message' : $scope.message,'user':'admin'});
+      $scope.chat_logs.push({"message": $scope.message,'user':'admin','ali':'left'})
+      $scope.message ="";
+      $scope.gotoBottom();
+    }
+
+    socket.on('new_chat_log', function (data) {
+      if($rootScope.chat_show){
+          if(data.user == 'client')
+            data.ali = 'right'
+          else
+            data.ali = 'left'
+
+          $scope.chat_logs.push(data)
+          $scope.gotoBottom();
+      }
+    });
+
+    socket.on('chat_logs', function (data) {
+      $scope.chat_logs = data;
+      $scope.chat_logs.reverse();
+      for(var i in data)
+      {
+        if(data[i].user == 'client')
+          data[i].ali = 'right'
+        else
+          data[i].ali = 'left'
+      }
+
+      $scope.gotoBottom();
+    });
 }]
 )
 
