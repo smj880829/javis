@@ -4,9 +4,9 @@ var app = angular.module('loginApp', [])
       $rootScope.user = {};
 
       function get_me() {
+        var _self = this;
         FB.api('/me', function(response) {
-          $rootScope.user.name = response.name;
-          $rootScope.user.email = response.email;
+            $rootScope.user = _self.user = res;
         });
       }
 
