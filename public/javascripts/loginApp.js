@@ -2,7 +2,7 @@ var app = angular.module('loginApp', [])
 
   app.config(function ($rootScope) {
     $rootScope.user = new Object();
-  }
+  })
 
   app.run(['$rootScope', '$window',function($rootScope, $window) {
 
