@@ -34,7 +34,9 @@ var app = angular.module('loginApp', [])
           xfbml: true,
           version: 'v2.2'
         });
-
+        FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
+        });
       };
 
       (function(d, s, id) {
