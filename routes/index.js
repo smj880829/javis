@@ -2,28 +2,35 @@ var express = require('express');
 var router = express.Router();
 
 var auth = function(req, res, next) {
-  console.log(req.params.accessToken);
-  var http2 = require('https')
-  var check = false
-  var url = 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
-  http2.get(url, (res) => {
-    res.setEncoding('utf8');
-    res.on('data', function (chunk) {
-         console.log(chunk);
-       });
-  }).on('error', (e) => {
-    console.log(`Got error: ${e.message}`);
-  });
+  var https = require('https')
+  var ob = '';
+  var url = 'https://graph.facebook.com/oauth/access_token?client_id=706997686105976&client_secret=a0c72b5d0c9152bcd5a8fb0de44435b5&grant_type=client_credentials'
+      https.get(url, (res) => {
+          res.on('data', (chunk) => {
+            console.log('BODY: ' +chunk);
+            ob = JSON.parse(chunk).access_token;
+            console.log(ob+ "1") ;
+          });
+      }).on('error', (e) => {
+        console.log(`auth error`);
+      });
 
-  if (check)
+
+      console.log(ob);
+
+  if (req.body.accessToken)
     return next();
   else
-    return   res.redirect('/test');
+    return   res.redirect('/login');
 };
 
 /* GET home page. */
-router.get('/',auth, function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+});
+
+router.post('/', function(req, res, next) {
+
 });
 
 router.get('/test', function(req, res, next) {

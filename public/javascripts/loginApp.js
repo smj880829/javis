@@ -1,6 +1,6 @@
 var app = angular.module('loginApp', [])
 
-app.controller('loginCtl',['$scope', '$window','$rootScope','socket',  function($scope, $window,$rootScope,socket) {
+app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  function($scope, $window,$rootScope,socket,$http) {
 
   $scope.login = function() {
     FB.login(function(response){
@@ -9,8 +9,20 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket',  function(
 
          FB.api('/me?fields=name,email', function(response) {
            //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
-           //$window.alert(response.name + response.id + response.email)
-           $window.location.href = "/?accessToken="+accessToken;
+           //$window.location.href = "/";
+
+           $http({
+               url: '/',
+               method: "POST",
+               data: {'accessToken': accessToken }
+           })
+           .then(function(response) {
+                   // success
+           },
+           function(response) { // optional
+                   // failed
+           });
+
          });
       } else {
 
