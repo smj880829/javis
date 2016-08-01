@@ -20,7 +20,7 @@ var auth = function(req, res, next) {
         console.log(`auth error`);
       });
 
-      console.log(ob);
+  //console.log(ob);
   if (req.body.accessToken)
     return next();
   else
