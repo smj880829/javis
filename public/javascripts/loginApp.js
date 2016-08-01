@@ -4,7 +4,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $
 
   $scope.login = function() {
     FB.login(function(response){
-      $window.alert(response.name,response.id,response.email)
+      $window.alert(response.name)
       //socket.emit('login',{'message' : $scope.message,'user':'admin'});
       $window.location.href = "/";
     });
