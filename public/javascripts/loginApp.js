@@ -6,7 +6,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $
     FB.login(function(response){
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
-         FB.api('/me', function(response) {
+         FB.api('/me?fields=email', function(response) {
            $window.alert(response.name + response.id + response.email)
            $window.location.href = "/";
          });
