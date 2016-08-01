@@ -16,6 +16,7 @@ io.on('connection', function (socket) {
 
   socket.on('login', function(data){
     db.find_id('userData',{'id':data.id},function(re){
+      console.log(re.isempty);
       if(re.isempty){
         db.insert('userData',data,function(){
           console.log("insert userData");

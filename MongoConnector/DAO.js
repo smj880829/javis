@@ -18,15 +18,14 @@ function find_id(col,filter,callback){
     var dbCol = db.collection(col)
     dbCol.find(filter).toArray(function(err, docs) {
       if (err) throw err
+      db.close()
       if(docs){
-        db.close()
         docs.isempty = false
-        callback(docs)
       }
       else {
-        db.close()
-        callback({'isempty':true})
+        docs.isempty = true
       }
+      callback(docs)
       })
 })
 }
@@ -50,6 +49,7 @@ function insert(col,query,callback){
     dbCol.insert(query,function(err) {
       if (err) throw err
       db.close()
+      callback()
     })
 })
 }
