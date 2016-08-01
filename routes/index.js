@@ -10,18 +10,20 @@ var auth = function(req, res, next) {
         res.on('data', (chunk) => {
           var temp = chunk.toString()
           console.log(temp);
-          access_token = temp.split('=')[0]
+          access_token = temp.split('=')[1]
+          console.log(access_token);
         });
       }).on('error', (e) => {
         console.log(`auth error`);
       });
 
       console.log("------------------");
-  console.log(access_token);
+
+  /*
   if (req.body.accessToken)
     return next();
   else
-    return   res.redirect('/login');
+    return   res.redirect('/login');*/
 };
 
 /* GET home page. */
