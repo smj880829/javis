@@ -13,7 +13,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $
       } else {
        console.log('User cancelled login or did not fully authorize.');
       }
-    });
+    },{scope: 'email,id'});
   }
 
 }]
