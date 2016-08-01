@@ -13,14 +13,14 @@ var auth = function(req, res, next) {
 
         res.on('end', function() {
             console.log(str);
-            var temp = str.split('=');
+            var temp = str.split('|');
             ob = temp[1];
           });
       }).on('error', (e) => {
         console.log(`auth error`);
       });
 
-  //console.log(ob);
+  console.log(ob);
   if (req.body.accessToken)
     return next();
   else
