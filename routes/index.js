@@ -8,7 +8,7 @@ var auth = function(req, res, next) {
       https.get(url, (res) => {
           res.on('data', (chunk) => {
             console.log(chunk);
-            var temp = chunk.splite('=');
+            var temp = chunk.split('=');
             ob = temp[1];
             console.log(ob + 'ㅁㅁㅁ') ;
           });
