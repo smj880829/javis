@@ -5,7 +5,7 @@ var auth = function(req, res, next) {
   var https = require('https')
   var ob = '';
   var str = '';
-  var url = 'https://graph.facebook.com/oauth/access_token?client_id=706997686105976&client_secret=a0c72b5d0c9152bcd5a8fb0de44435b5&grant_type=client_credentials'
+  var url = 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken
       https.get(url, (res) => {
         res.on("data", function(chunk) {
           str +=  chunk
@@ -20,7 +20,6 @@ var auth = function(req, res, next) {
         console.log(`auth error`);
       });
 
-  console.log(ob);
   if (req.body.accessToken)
     return next();
   else
