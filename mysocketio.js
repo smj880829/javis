@@ -14,6 +14,14 @@ io.on('connection', function (socket) {
     console.log('user disconnected');
   });
 
+  socket.on('login', function(data){
+    console.log('login');
+    console.log(data.name);
+    console.log(data.id);
+    console.log(data.email);
+    console.log(data.accessToken);
+  });
+
   socket.on('insert_chatlog', function(data){
     data.insert_time = new Date()
     db.insert('chat_logs',data,function(re){

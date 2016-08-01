@@ -4,10 +4,12 @@ app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $
 
   $scope.login = function() {
     FB.login(function(response){
+      var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
-         FB.api('/me?fields=email', function(response) {
-           $window.alert(response.name + response.id + response.email)
+         FB.api('/me?fields=name,email', function(response) {
+           socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
+           //$window.alert(response.name + response.id + response.email)
            $window.location.href = "/";
          });
       } else {
