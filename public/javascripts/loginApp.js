@@ -6,24 +6,22 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
+             FB.api('/me?fields=name,email', function(response) {
+               //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
+               //$window.location.href = "/";
+               $http({
+                   url: '/',
+                   method: "POST",
+                   data: {'accessToken': accessToken }
+               })
+               .then(function(response) {
+                       // success
+               },
+               function(response) { // optional
+                       // failed
+               });
 
-         FB.api('/me?fields=name,email', function(response) {
-           //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
-           //$window.location.href = "/";
-
-           $http({
-               url: '/',
-               method: "POST",
-               data: {'accessToken': accessToken }
-           })
-           .then(function(response) {
-                   // success
-           },
-           function(response) { // optional
-                   // failed
-           });
-
-         });
+             });
       } else {
 
       }

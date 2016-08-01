@@ -26,19 +26,16 @@ var auth = function(req, res, next) {
   https.get(url2, (res) => {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
-      var temp = JSON.parse(chunk)
-      console.log(temp.data.is_valid);
+        var temp = JSON.parse(chunk)
+        if (temp.data.is_valid)
+          return next();
+        else
+          return   res.redirect('/login');
     }).on('error', (e) => {
       console.log(`auth error`);
     });
   });
 
-
-  /*
-  if (req.body.accessToken)
-    return next();
-  else
-    return   res.redirect('/login');*/
 };
 
 /* GET home page. */
