@@ -29,7 +29,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/', function(req, res, next) {
+router.post('/',auth, function(req, res, next) {
 
 });
 
