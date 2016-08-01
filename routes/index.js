@@ -8,7 +8,7 @@ var auth = function(req, res, next) {
   http2.get(url, (res) => {
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
-         console.log(chunk);
+         console.log(chunk.is_valid);
          check = chunk.is_valid
        });
   }).on('error', (e) => {
