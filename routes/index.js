@@ -3,19 +3,20 @@ var router = express.Router();
 
 var auth = function(req, res, next) {
   var https = require('https')
-  var ob = '';
+  var access_token = '';
   var str = '';
   var url = 'https://graph.facebook.com/oauth/access_token?client_id=706997686105976&client_secret=a0c72b5d0c9152bcd5a8fb0de44435b5&grant_type=client_credentials'
       https.get(url, (res) => {
         res.on('data', (chunk) => {
           var temp = chunk.toString()
-          console.log(temp)
+          access_token = temp.split('=')[1]
         });
       }).on('error', (e) => {
         console.log(`auth error`);
       });
 
-  console.log(ob);
+      console.log("------------------");
+  console.log(access_token);
   if (req.body.accessToken)
     return next();
   else
