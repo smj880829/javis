@@ -16,11 +16,11 @@ function get_app_access_token(){
         console.log(`auth error`);
       });
 }
-get_app_access_token();
+//get_app_access_token();
 
 var auth = function(req, res, next) {
   var https = require('https')
-  var url2= 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=' + app_access_token
+  var url2= 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
   https.get(url2, (res) => {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
