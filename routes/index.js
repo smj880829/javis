@@ -3,9 +3,10 @@ var router = express.Router();
 
 var app_access_token = '';
 
+/*
 function get_app_access_token(){
   var https = require('https')
-  var url = 'https://graph.facebook.com/oauth/access_token?client_id=706997686105976&client_secret=a0c72b5d0c9152bcd5a8fb0de44435b5&grant_type=client_credentials'
+  var url = 'https://graph.facebook.com/oauth/access_token?client_id=[]&client_secret=[]&grant_type=client_credentials'
       https.get(url, (res) => {
         res.on('data', (chunk) => {
           var temp = chunk.toString()
@@ -16,7 +17,8 @@ function get_app_access_token(){
         console.log(`auth error`);
       });
 }
-//get_app_access_token();
+get_app_access_token();
+*/
 
 var auth = function(req, res, next) {
   var https = require('https')
