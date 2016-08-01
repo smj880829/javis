@@ -9,6 +9,7 @@ var auth = function(req, res, next) {
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
          console.log(chunk);
+         check = chunk.is_valid
        });
   }).on('error', (e) => {
     console.log(`Got error: ${e.message}`);
