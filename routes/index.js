@@ -2,19 +2,31 @@ var express = require('express');
 var router = express.Router();
 
 var auth = function(req, res, next) {
-  if (req.body.accessToken)
+  var http2 = require('https')
+  var check = false
+  var url = 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
+  http2.get(url, (res) => {
+    res.on('data', function (chunk) {
+         console.log(chunk.is_valid);
+         check = chunk.is_valid;
+       });
+  }).on('error', (e) => {
+    console.log(`Got error: ${e.message}`);
+  });
+
+  if (check)
     return next();
   else
-    return   res.redirect('/login');
+    return   res.redirect('/test');
 };
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',auth, function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/', function(req, res, next) {
-  res.render('index');
+router.get('/test',auth, function(req, res, next) {
+  res.render('test');
 });
 
 router.get('/login', function(req, res, next) {
