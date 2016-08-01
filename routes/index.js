@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 
 var auth = function(req, res, next) {
+  console.log(req.body.accessToken);
   var http2 = require('https')
   var check = false
   var url = 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
   http2.get(url, (res) => {
     res.setEncoding('utf8');
     res.on('data', function (chunk) {
-         console.log(chunk.data);
-         check = chunk.data
+         console.log(chunk);
        });
   }).on('error', (e) => {
     console.log(`Got error: ${e.message}`);
