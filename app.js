@@ -77,7 +77,7 @@ http.listen(80);
 
 var http2 = require('https')
 http2.get('https://graph.facebook.com/oauth/access_token?client_id=706997686105976&client_secret=a0c72b5d0c9152bcd5a8fb0de44435b5&grant_type=client_credentials', (res) => {
-  console.log(res.app-access-token);
+  console.log(res.access_token);
 }).on('error', (e) => {
   console.log(`Got error: ${e.message}`);
 });
