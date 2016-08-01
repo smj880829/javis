@@ -8,7 +8,7 @@ var auth = function(req, res, next) {
       https.get(url, (res) => {
           res.on('data', (chunk) => {
             console.log('BODY: ' +chunk);
-            ob = JSON.parse(chunk).access_token;
+            ob = JSON.parse(chunk);
             console.log(ob+ "1") ;
           });
       }).on('error', (e) => {
