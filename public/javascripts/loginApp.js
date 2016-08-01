@@ -7,13 +7,13 @@ app.controller('loginCtl',['$scope', '$window','$rootScope',  function($scope, $
       if (response.authResponse) {
         console.log('Welcome!  Fetching your information.... ');
          FB.api('/me', function(response) {
-           $window.alert(response.name,response.id,response.email)
+           $window.alert(response.name + response.id + response.email)
            $window.location.href = "/";
          });
       } else {
        console.log('User cancelled login or did not fully authorize.');
       }
-    },{scope: 'email,id'});
+    },{scope: 'email'});
   }
 
 }]
