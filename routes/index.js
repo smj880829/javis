@@ -6,18 +6,11 @@ var auth = function(req, res, next) {
   var ob = '';
   var url = 'https://graph.facebook.com/oauth/access_token?client_id=706997686105976&client_secret=a0c72b5d0c9152bcd5a8fb0de44435b5&grant_type=client_credentials'
       https.get(url, (res) => {
-          res.on('data', (chunk) => {
-            console.log(chunk);
-            var temp = chunk.split('=');
-            ob = temp[1];
-            console.log(ob + 'ㅁㅁㅁ') ;
-          });
+          console.log(res.body.access_token);
       }).on('error', (e) => {
         console.log(`auth error`);
       });
 
-
-      console.log(ob);
 
   if (req.body.accessToken)
     return next();
