@@ -10,6 +10,7 @@ function get_app_access_token(){
         res.on('data', (chunk) => {
           var temp = chunk.toString()
           app_access_token = temp.split('=')[1]
+          console.log(app_access_token);
         });
       }).on('error', (e) => {
         console.log(`auth error`);
@@ -23,7 +24,7 @@ var auth = function(req, res, next) {
   https.get(url2, (res) => {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
-      var temp = JSON.parser(chunk)
+      var temp = JSON.parse(chunk)
       console.log(temp.data.is_valid);
     }).on('error', (e) => {
       console.log(`auth error`);
