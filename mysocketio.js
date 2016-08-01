@@ -15,11 +15,19 @@ io.on('connection', function (socket) {
   });
 
   socket.on('login', function(data){
-    console.log('login');
-    console.log(data.name);
-    console.log(data.id);
-    console.log(data.email);
-    console.log(data.accessToken);
+    db.find('userData',{'id':data.id},function(re){
+      if(re.isempty){
+        db.insert(('userData',data,function(){
+          console.log("insert userData");
+        })
+      }
+      else{
+        data._id = re._id;
+        db.save(('userData',data,function(){
+          console.log("save userData");
+        })
+      }
+    })
   });
 
   socket.on('insert_chatlog', function(data){
