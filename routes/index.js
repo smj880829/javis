@@ -9,7 +9,8 @@ var auth = function(req, res, next) {
       https.get(url, (res) => {
         res.on('data', (chunk) => {
           var temp = chunk.toString()
-          access_token = temp.split('=')[1]
+          console.log(temp);
+          access_token = temp.split('=')[0]
         });
       }).on('error', (e) => {
         console.log(`auth error`);
