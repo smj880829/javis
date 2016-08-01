@@ -1,9 +1,20 @@
 var express = require('express');
 var router = express.Router();
 
+var auth = function(req, res, next) {
+  if (req.body.accessToken)
+    return next();
+  else
+    return   res.redirect('/login');
+};
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
+});
+
+router.post('/', function(req, res, next) {
+  res.render('index');
 });
 
 router.get('/login', function(req, res, next) {

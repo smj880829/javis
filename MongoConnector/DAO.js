@@ -49,7 +49,7 @@ function insert(col,query,callback){
     dbCol.insert(query,function(err) {
       if (err) throw err
       db.close()
-      console.log("insert" + col);
+      console.log("insert " + col);
       callback()
     })
 })
@@ -62,7 +62,7 @@ function save(col,query,callback){
     dbCol.save(query,function(err) {
       if (err) throw err
       db.close()
-      console.log("save" + col);
+      console.log("save " + col);
       callback()
     })
 })
