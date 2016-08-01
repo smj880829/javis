@@ -6,8 +6,6 @@ var auth = function(req, res, next) {
   var check = false
   var url = 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
   http2.get(url, (res) => {
-
-    res.data..is_valid
     res.on('data', function (chunk) {
          console.log(chunk);
        });
