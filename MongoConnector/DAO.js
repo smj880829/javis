@@ -12,21 +12,20 @@ function find(col,filter,callback){
 })
 }
 
-function findOne_id(col,filter,callback){
+function findOne(col,filter,callback){
   mongo.connect(db_Config.url,function(err,db){
     if (err) throw err
     var dbCol = db.collection(col)
     dbCol.findOne(filter,function(err, docs) {
-      if (err) throw err
-      db.close()
-      if(docs){
-        docs.isempty = false
-        callback(docs)
-      }
-      else {
-        callback({'isempty':true})
-      }
-
+            if (err) throw err
+            db.close()
+            if(docs){
+              docs.isempty = false
+              callback(docs)
+            }
+            else {
+              callback({'isempty':true})
+            }
       })
 })
 }
@@ -50,6 +49,7 @@ function insert(col,query,callback){
     dbCol.insert(query,function(err) {
       if (err) throw err
       db.close()
+      console.log("insert" + col);
       callback()
     })
 })
@@ -62,6 +62,7 @@ function save(col,query,callback){
     dbCol.save(query,function(err) {
       if (err) throw err
       db.close()
+      console.log("save" + col);
       callback()
     })
 })
@@ -80,7 +81,7 @@ function update(col,filter,query,callback){
 
 
 exports.find = find;
-exports.findOne_id = findOne_id;
+exports.findOne = findOne;
 exports.insert = insert;
 exports.update = update;
 exports.save = save;

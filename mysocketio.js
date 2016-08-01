@@ -15,18 +15,14 @@ io.on('connection', function (socket) {
   });
 
   socket.on('login', function(data){
-    db.findOne_id('userData',{'id':data.id},function(re){
+    db.findOne('userData',{'id':data.id},function(re){
       console.log(re.isempty);
       if(re.isempty){
-        db.insert('userData',data,function(){
-          console.log("insert userData");
-        })
+        db.insert('userData',data,function(){})
       }
       else{
         data._id = re._id;
-        db.save('userData',data,function(){
-          console.log("save userData");
-        })
+        db.save('userData',data,function(){})
       }
     })
   });
