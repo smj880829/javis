@@ -24,6 +24,7 @@ var auth = function(req, res, next) {
   var https = require('https')
   var url2= 'https://graph.facebook.com/debug_token?input_token='+req.body.access_token+'&access_token=' + app_access_token
   https.get(url2, (res) => {
+    res.setEncoding('utf8');
     res.on('data', (chunk) => {
       console.log(chunk);
     }).on('error', (e) => {
