@@ -10,13 +10,10 @@ function get_app_access_token(){
         res.on('data', (chunk) => {
           var temp = chunk.toString()
           app_access_token = temp.split('=')[1]
-          console.log(`get app access token` + app_access_token);
         });
       }).on('error', (e) => {
         console.log(`auth error`);
       });
-
-      console.log("----222--------");
 }
 get_app_access_token();
 
@@ -26,15 +23,13 @@ var auth = function(req, res, next) {
   https.get(url2, (res) => {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
-      console.log(req.body.access_token);
-
-      console.log(chunk);
+      var temp = JSON.parser(chunk)
+      console.log(temp.data.is_valid);
     }).on('error', (e) => {
       console.log(`auth error`);
     });
   });
 
-      console.log("------------------");
 
   /*
   if (req.body.accessToken)
