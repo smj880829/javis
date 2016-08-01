@@ -79,6 +79,7 @@ function update(col,filter,query,callback){
 
 
 exports.find = find;
+exports.find_id = find_id;
 exports.insert = insert;
 exports.update = update;
 exports.save = save;
