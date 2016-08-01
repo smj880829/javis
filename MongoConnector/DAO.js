@@ -12,20 +12,21 @@ function find(col,filter,callback){
 })
 }
 
-function find_id(col,filter,callback){
+function findOne_id(col,filter,callback){
   mongo.connect(db_Config.url,function(err,db){
     if (err) throw err
     var dbCol = db.collection(col)
-    dbCol.find(filter).toArray(function(err, docs) {
+    dbCol.findOne(filter,function(err, docs) {
       if (err) throw err
       db.close()
       if(docs){
         docs.isempty = false
+        callback(docs)
       }
       else {
-        docs.isempty = true
+        callback({'isempty':true})
       }
-      callback(docs)
+
       })
 })
 }
@@ -79,7 +80,7 @@ function update(col,filter,query,callback){
 
 
 exports.find = find;
-exports.find_id = find_id;
+exports.findOne_id = findOne_id;
 exports.insert = insert;
 exports.update = update;
 exports.save = save;
