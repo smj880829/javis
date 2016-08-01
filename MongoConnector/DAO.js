@@ -61,6 +61,7 @@ function save(col,query,callback){
     dbCol.save(query,function(err) {
       if (err) throw err
       db.close()
+      callback()
     })
 })
 }
