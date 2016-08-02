@@ -1,55 +1,160 @@
 extends layout_profile
 
 block content
-  .easytransitions
-        .easytransitions_transition
-        .easytransitions_navigation
-          .easytransitions_navigation__left
-            i.icon.ion-arrow-left-c
-          .easytransitions_navigation__right
-            i.icon.ion-arrow-right-c
-        section.active_slide(data-transition='none')
-          .center
-            h1 Super Easy Slider/Page Transitions
-            h2 Go ahead, click the lil arrows
-        section(data-transition='split_diagonal')
-          .center
-            h1 You see that?
-            span %section{'data-transition' => 'split_diagonal'}
-        section(data-transition='split_diagonal_alt')
-          .center
-            h1 So smooth!
-            span %section{'data-transition' => 'split_diagonal_alt'}
-        section(data-transition='split_diamond')
-          .center
-            h1 Such swag!
-            span %section{'data-transition' => 'split_diamond'}
-        section(data-transition='split_vertical')
-          .center
-            h1 Easy to implement!
-            span %section{'data-transition' => 'split_vertical'}
-        section(data-transition='split_horizontal')
-          .center
-            h1 Fun to use!
-            span %section{'data-transition' => 'split_horizontal'}
-        section(data-transition='wipe_left')
-          .center
-            h1 Looks good!
-            span %section{'data-transition' => 'wipe_left'}
-        section(data-transition='wipe_right')
-          .center
-            h1 Feels good!
-            span %section{'data-transition' => 'wipe_right'}
-        section(data-transition='wipe_top')
-          .center
-            h1 Another transition
-            span %section{'data-transition' => 'wipe_top'}
-        section(data-transition='wipe_bottom')
-          .center
-            h1 Well you got this far, hows about a cheeky follow?
-            a.download(href='http://codepen.io/jcoulterdesign/pens/popular/', target='_blank')
-              i.icon.ion-eye
-              span View my other pens
-            a.follow(href='http://codepen.io/jcoulterdesign/', target='_blank')
-              i.icon.ion-social-codepen-outline
-              span Follow me on codepen
+  section.main
+      article
+        .cl.image(style="background-image: url('http://goo.gl/37PplG')")
+        .cl.header
+          img.logo(src='http://goo.gl/ddlnlW', alt='')
+          h1 Developers
+          h2 Web Design - UI/UX
+          h3 Design - Developers
+          div
+            img(src='http://goo.gl/PpQIKr', alt='')
+      article
+        .cl.image(style="background-image: url('http://goo.gl/37PplG')")
+        .cl.header
+          h1 Compatibility
+          h3 Safari - Chrome - Firefox
+          .browser
+            img(src='http://goo.gl/Clsg0L', alt='')
+            img(src='http://goo.gl/z9C48y', alt='')
+            img(src='http://goo.gl/LSVplT', alt='')
+      article
+        .cl.image(style="background-image: url('http://goo.gl/nhfkRr')")
+        .cl.text
+          a(href='#')
+            h2 Beauty Girl
+          .cl-tx
+            span
+              i.fa.fa-user
+              |  Ap
+            span
+              i.fa.fa-tags
+              a(href='/')  photo
+              | ,
+              a(href='/')  Portrait
+            span
+              i.fa.fa-comments
+              |  5 comments
+          .cl-tx
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
+      article
+        .cl.image(style="background-image: url('http://goo.gl/mFOvya')")
+        .cl.text
+          a(href='#')
+            h2 Miranda Kerr
+          .cl-tx
+            span
+              i.fa.fa-user
+              |  Ap
+            span
+              i.fa.fa-tags
+              a(href='/')  photo
+              | ,
+              a(href='/')  Portrait
+            span
+              i.fa.fa-comments
+              |  5 comments
+          .cl-tx
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
+      article
+        .cl.image(style="background-image: url('http://goo.gl/k2qeT3')")
+        .cl.text
+          a(href='#')
+            h2 Kristen Stewart
+          .cl-tx
+            span
+              i.fa.fa-user
+              |  Ap
+            span
+              i.fa.fa-tags
+              a(href='/')  photo
+              | ,
+              a(href='/')  Portrait
+            span
+              i.fa.fa-comments
+              |  5 comments
+          .cl-tx
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
+      article
+        .cl.image(style="background-image: url('http://goo.gl/NCdbc2')")
+        .cl.text
+          a(href='#')
+            h2 Ashley Beson
+          .cl-tx
+            span
+              i.fa.fa-user
+              |  Ap
+            span
+              i.fa.fa-tags
+              a(href='/')  photo
+              | ,
+              a(href='/')  Portrait
+            span
+              i.fa.fa-comments
+              |  5 comments
+          .cl-tx
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
+      article
+        .cl.image(style="background-image: url('http://goo.gl/TGD5Pi')")
+        .cl.text
+          a(href='#')
+            h2 Women See
+          .cl-tx
+            span
+              i.fa.fa-user
+              |  Ap
+            span
+              i.fa.fa-tags
+              a(href='/')  photo
+              | ,
+              a(href='/')  Portrait
+            span
+              i.fa.fa-comments
+              |  5 comments
+          .cl-tx
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
+      article
+        .cl.image(style="background-image: url('http://goo.gl/1NsWkj')")
+        .cl.text
+          a(href='#')
+            h2 Kendall jenner
+          .cl-tx
+            span
+              i.fa.fa-user
+              |  Ap
+            span
+              i.fa.fa-tags
+              a(href='/')  photo
+              | ,
+              a(href='/')  Portrait
+            span
+              i.fa.fa-comments
+              |  5 comments
+          .cl-tx
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
+      article
+        .cl.image(style="background-image: url('http://goo.gl/AmF7aw')")
+        .cl.footer
+          h2 © 2015 Developers
+          .cl-tx
+            p
+              | This is a blog design by
+              a(href='//roswellparian.blogg.se/')  iRoss
+              | to
+              a(href='//blogg.no/')  blogg.no
+              |  in
+              a(href='http://parian.blogg.no/')  http://parian.blogg.no/
+              | . for some ask write to
+              a(href='mailto:parian.developers@gmail.com')  parian.developers@gmal.com
+          h3 © 2015 Nettavisen
+          .mna-footer.mna-footer-replaced
+            p
+              | Setting up Font Awesome can be as simple as adding two lines of code to your website, or you can be a pro and customize the LESS yourself! Font Awesome even plays nicely with Bootstrap 3!.
