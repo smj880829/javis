@@ -4,56 +4,12 @@ html
     title 어서와용
     script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
     script(src='http://s.codepen.io/assets/libs/modernizr.js', type='text/javascript')
+    script(src='/javascrpts/profile.js', type='text/javascript')
     link(href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', rel='stylesheet')
     link(rel='stylesheet', href='/stylesheets/profile.css')
     script(src='//tympanus.net/Development/DraggableDualViewSlideshow/js/dragdealer.js', type='text/javascript')
     script(src='//tympanus.net/Development/DraggableDualViewSlideshow/js/dragslideshow.js', type='text/javascript')
     script(src='//tympanus.net/Development/DraggableDualViewSlideshow/js/classie.js', type='text/javascript')
-
-    script(type='text/javascript').
-        (function() {
-        var overlay = document.getElementById( 'overlay' ),
-        overlayClose = overlay.querySelector( 'button' ),
-        header = document.getElementById( 'header' )
-        switchBtnn = header.querySelector( 'button.slider-switch' ),
-        toggleBtnn = function() {
-        if( slideshow.isFullscreen ) {
-        classie.add( switchBtnn, 'view-maxi' );
-        }
-        else {
-        classie.remove( switchBtnn, 'view-maxi' );
-        }
-        },
-        toggleCtrls = function() {
-        if( !slideshow.isContent ) {
-        classie.add( header, 'hide' );
-        }
-        },
-        toggleCompleteCtrls = function() {
-        if( !slideshow.isContent ) {
-        classie.remove( header, 'hide' );
-        }
-        },
-        slideshow = new DragSlideshow( document.getElementById( 'slideshow' ), {
-        // toggle between fullscreen and minimized slideshow
-        onToggle : toggleBtnn,
-        // toggle the main image and the content view
-        onToggleContent : toggleCtrls,
-        // toggle the main image and the content view (triggered after the animation ends)
-        onToggleContentComplete : toggleCompleteCtrls
-        }),
-        toggleSlideshow = function() {
-        slideshow.toggle();
-        toggleBtnn();
-        },
-        closeOverlay = function() {
-        classie.add( overlay, 'hide' );
-        };
-        // toggle between fullscreen and small slideshow
-        switchBtnn.addEventListener( 'click', toggleSlideshow );
-        // close overlay
-        overlayClose.addEventListener( 'click', closeOverlay );
-        }());
 
   body
     block content
