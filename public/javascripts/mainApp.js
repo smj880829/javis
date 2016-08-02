@@ -110,7 +110,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
         } else if (response.status === 'not_authorized') {
           $rootScope.loginFlg = 'LOG IN'
         } else {
-
+          $rootScope.loginFlg = 'LOG IN'
         }
       }
 
