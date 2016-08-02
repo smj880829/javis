@@ -17,7 +17,8 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
 
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
-
+    $scope.logtext = "LOG IN"
+    
       if($rootScope.chat_show){
         $rootScope.$emit("init_chat", {});
       }
@@ -39,14 +40,6 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
     }
     $rootScope.logflg = !$rootScope.logflg;
   }
-
-  $rootScope.$on("chang_logintext", function(){
-    if($rootScope.logflg){
-      $scope.logtext = "LOG IN"
-    }else{
-      $scope.logtext = "LOG OUT"
-    }
-  });
 
 }]
 )
