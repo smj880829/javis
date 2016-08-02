@@ -8,8 +8,9 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
       if (response.authResponse) {
              $http.defaults.headers.common.Authorization = accessToken;
              FB.api('/me?fields=name,email', function(response) {
-               socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
-               $window.location.href = "/";
+               //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
+               //$window.location.href = "/";
+               $http.get('/',,).then(successCallback, errorCallback);
              });
       } else {
 
