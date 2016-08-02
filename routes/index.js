@@ -4,7 +4,7 @@ var auth = require('../authorization');
 
 
 /* GET home page. */
-router.get('/', auth.check_fb_user_accessToken , function(req, res, next) {
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
