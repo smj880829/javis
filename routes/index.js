@@ -8,9 +8,7 @@ var check_fb_user_accessToken = function(req, res, next) {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
-        console.log(temp.data.is_valid)
           if (temp.data.is_valid){
-              console.log(`1`);
             return next();
           }else{
             return   res.redirect('/login');
@@ -28,9 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', check_fb_user_accessToken , function(req, res, next) {
-  console.log(`2`);
-  res.render('index');
-  console.log(`3`);
+  res.redirect('/');
 });
 
 router.get('/test', function(req, res, next) {
