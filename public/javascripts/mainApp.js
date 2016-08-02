@@ -14,6 +14,7 @@ app.config(function ($routeProvider) {
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
   $rootScope.chat_show = false;
   $rootScope.nav_show = true;
+  $rootScope.loginFlg = $scope.loginFlg;
 
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
@@ -26,10 +27,24 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
       }
   }
 
-  $scope.log = function() {
-    FB.logout(function(response){
+  $rootScope.$on("log_in", function(){
+    $scope.logflg = 'LOG IN'
+  });
 
-    });
+  $rootScope.$on("log_out", function(){
+    $scope.logflg = 'LOG OUT'
+  });
+
+  $scope.log = function() {
+    if($scope.logflg == "LOG IN"){
+      FB.logout(function(response){
+
+      });
+    }else{
+      FB.login(function(response){
+
+      });
+    }
   }
 
 }]
@@ -106,11 +121,11 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
         console.log(response);
         if (response.status === 'connected') {
           get_me();
-          $rootScope.loginFlg = 'LOG OUT'
+          $rootScope.$emit("log_out", {});
         } else if (response.status === 'not_authorized') {
-          $rootScope.loginFlg = 'LOG IN'
+          $rootScope.$emit("log_in", {});
         } else {
-          $rootScope.loginFlg = 'LOG IN'
+          $rootScope.$emit("log_in", {});
         }
       }
 
