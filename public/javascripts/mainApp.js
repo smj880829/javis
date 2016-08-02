@@ -14,6 +14,7 @@ app.config(function ($routeProvider) {
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
   $rootScope.chat_show = false;
   $rootScope.nav_show = true;
+  $rootScope.logflg = true;
 
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
@@ -27,11 +28,11 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   }
 
   $rootScope.$on("log_in", function(){
-    $scope.logflg = 'LOG IN'
+    $scope.logtext = 'LOG IN'
   });
 
   $rootScope.$on("log_out", function(){
-    $scope.logflg = 'LOG OUT'
+    $scope.logtext = 'LOG OUT'
   });
 
   $scope.log = function() {
@@ -106,11 +107,11 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
     function statusChangeCallback(response) {
       console.log(response)
       if (response.status === 'connected') {
-        $rootScope.logflg = "123"
+          $rootScope.$emit("log_out", {});
       } else if (response.status === 'not_authorized') {
-        $rootScope.logflg = "2"
+          $rootScope.$emit("log_in", {});
       } else {
-        $rootScope.logflg = "3"
+          $rootScope.$emit("log_in", {});
       }
     }
 
