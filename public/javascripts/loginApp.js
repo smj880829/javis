@@ -10,7 +10,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
              FB.api('/me?fields=name,email', function(response) {
                //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
                //$window.location.href = "/";
-               $http.get('/',,).then(successCallback, errorCallback);
+               $http.get('/').then(successCallback, errorCallback);
              });
       } else {
 
