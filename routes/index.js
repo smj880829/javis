@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
   if (check_fb_user_accessToken(req.headers["token"])){
     res.render('index');
   }else{
-     res.redirect('/test');
+     res.redirect('/login');
     }
 });
 
