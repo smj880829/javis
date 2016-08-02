@@ -106,11 +106,11 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
     function statusChangeCallback(response) {
       console.log(response)
       if (response.status === 'connected') {
-        $rootScope.$emit('log_out',{})
+        $rootScope.logflg = true
       } else if (response.status === 'not_authorized') {
-        $rootScope.$emit('log_in',{})
+        $rootScope.logflg = false
       } else {
-        $rootScope.$emit('log_in',{})
+        $rootScope.logflg = false
       }
     }
 
