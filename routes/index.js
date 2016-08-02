@@ -1,32 +1,14 @@
 var express = require('express');
 var router = express.Router();
-
-function check_fb_user_accessToken(token, callback) {
-  var https = require('https')
-  var url2= 'https://graph.facebook.com/debug_token?input_token='+token+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
-  https.get(url2, (re) => {
-    re.setEncoding('utf8');
-    re.on('data', (chunk) => {
-        var temp = JSON.parse(chunk)
-        callback(temp.data.is_valid)
-    }).on('error', (e) => {
-      console.log(`auth error`);
-    });
-  });
-};
+var auth = require('../authorization')
 
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.headers["token"])
-  check_fb_user_accessToken(req.headers["token"],function(re){
-    if(re){
-      res.render('index');
-    }
-    else{
-      res.redirect('/login');
-    }
-  })
+  console.log(JSON.stringify(req.headers));
+
+  res.render('index');
+
 });
 
 router.post('/' , function(req, res, next) {

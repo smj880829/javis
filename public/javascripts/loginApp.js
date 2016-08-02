@@ -6,11 +6,10 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
-            $http.defaults.headers.token = accessToken;
+             $http.defaults.headers.common.Authorization = accessToken;
              FB.api('/me?fields=name,email', function(response) {
-               //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
+               socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
                $window.location.href = "/";
-
              });
       } else {
 
