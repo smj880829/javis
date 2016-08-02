@@ -1,48 +1,60 @@
+// Options
 
-			(function() {
+var slide_time = 1200; // The time it takes to complete an entire transition
+var change_point = slide_time / 2; // Calculates when the slide should change
+var right_arrow = $('.easytransitions_navigation__right'); // Element that trigger move right
+var left_arrow = $('.easytransitions_navigation__left'); // Element that trigger move left
+var slide_amount = $('.easytransitions section').length; // How many slides
+var current_slide = 1; // Starting slide
+var on = 1;
 
-				var overlay = document.getElementById( 'overlay' ),
-					overlayClose = overlay.querySelector( 'button' ),
-					header = document.getElementById( 'header' )
-					switchBtnn = header.querySelector( 'button.slider-switch' ),
-					toggleBtnn = function() {
-						if( slideshow.isFullscreen ) {
-							classie.add( switchBtnn, 'view-maxi' );
-						}
-						else {
-							classie.remove( switchBtnn, 'view-maxi' );
-						}
-					},
-					toggleCtrls = function() {
-						if( !slideshow.isContent ) {
-							classie.add( header, 'hide' );
-						}
-					},
-					toggleCompleteCtrls = function() {
-						if( !slideshow.isContent ) {
-							classie.remove( header, 'hide' );
-						}
-					},
-					slideshow = new DragSlideshow( document.getElementById( 'slideshow' ), {
-						// toggle between fullscreen and minimized slideshow
-						onToggle : toggleBtnn,
-						// toggle the main image and the content view
-						onToggleContent : toggleCtrls,
-						// toggle the main image and the content view (triggered after the animation ends)
-						onToggleContentComplete : toggleCompleteCtrls
-					}),
-					toggleSlideshow = function() {
-						slideshow.toggle();
-						toggleBtnn();
-					},
-					closeOverlay = function() {
-						classie.add( overlay, 'hide' );
-					};
+right_arrow.click(function(){
+  if(on == 1){
+    on = 0;
+    if(current_slide < slide_amount){
+      current_slide++;
+      var active_slide = $('.active_slide').next()
+      set_transition(active_slide);
+      setTimeout(function(){
+        $('.active_slide').hide().removeClass('active_slide').next().addClass('active_slide').show();
+      },change_point);
+      setTimeout(function(){
+        on = 1;
+      },slide_time);
+    } else {
+      // End
+    }
+  }
+});
 
-				// toggle between fullscreen and small slideshow
-				switchBtnn.addEventListener( 'click', toggleSlideshow );
-				// close overlay
-				overlayClose.addEventListener( 'click', closeOverlay );
+left_arrow.click(function(){
+  if(on == 1){
+    on = 0;
+    if(current_slide > 1){
+      current_slide--;
+      var active_slide = $('.active_slide').prev()
+      set_transition(active_slide);
+      setTimeout(function(){
+        $('.active_slide').hide().removeClass('active_slide').prev().addClass('active_slide').show();
+      },change_point);
+      setTimeout(function(){
+        on = 1;
+      },slide_time);
+    } else {
+      // Start
+    }
+  }
+});
 
-			}());
-		
+// Set transition type
+
+function set_transition(tran){
+  var transition_type = tran.data('transition')
+  $('.easytransitions_transition div').each(function(){
+    $(this).removeClass(this.className.split(' ').pop());
+    setTimeout(function(){
+      $('.easytransitions_transition div').addClass(transition_type)
+    },100)
+
+  })
+}
