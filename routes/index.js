@@ -5,9 +5,9 @@ var check_fb_user_accessToken = function(req, res, next) {
   var https = require('https')
   var flg
   var url2= 'https://graph.facebook.com/debug_token?input_token='+req.body.accessToken+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
-  https.get(url2, (re) => {
-    re.setEncoding('utf8');
-    re.on('data', (chunk) => {
+  https.get(url2, (res) => {
+    res.setEncoding('utf8');
+    res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
           if (temp.data.is_valid)
             return next();
