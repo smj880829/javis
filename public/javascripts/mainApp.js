@@ -15,6 +15,12 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   $rootScope.chat_show = false;
   $rootScope.nav_show = true;
 
+  if($rootScope.logflg){
+    $scope.logtext = "LOG IN"
+  }else {
+    $scope.logtext = "LOG OUT"
+  }
+
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
 
