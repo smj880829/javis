@@ -41,7 +41,6 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   }
 
   $rootScope.$on("chang_logintext", function(){
-    $window.alert($rootScope.logflg)
     if($rootScope.logflg){
       $scope.logtext = "LOG IN"
     }else{
@@ -114,13 +113,10 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       console.log(response)
       if (response.status === 'connected') {
           $rootScope.logflg = true;
-          $rootScope.$emit("chang_logintext", {});
       } else if (response.status === 'not_authorized') {
           $rootScope.logflg = false;
-          $rootScope.$emit("chang_logintext", {});
       } else {
           $rootScope.logflg = false;
-          $rootScope.$emit("chang_logintext", {});
       }
 
     }
