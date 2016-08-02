@@ -34,7 +34,6 @@ var check_fb_user_accessToken = function(req, res, next) {
       console.log(`auth error`);
     });
   });
-
 };
 
 
