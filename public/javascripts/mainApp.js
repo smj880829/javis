@@ -17,8 +17,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
 
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
-    $scope.logtext = "LOG IN"
-    
+
       if($rootScope.chat_show){
         $rootScope.$emit("init_chat", {});
       }
@@ -134,9 +133,6 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-
-
 
   }]);
 

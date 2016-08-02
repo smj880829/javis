@@ -13,6 +13,10 @@ router.post('/' , function(req, res, next) {
   res.render('index');
 });
 
+router.get('/profile' , function(req, res, next) {
+  res.render('profile');
+});
+
 router.get('/test', function(req, res, next) {
   res.render('test');
 });
