@@ -36,6 +36,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
         $scope.logtext = "LOG OUT"
       });
     }
+    $rootScope.logflg = !$rootScope.logflg;
   }
 
 }]
