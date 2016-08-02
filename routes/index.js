@@ -19,11 +19,14 @@ function check_fb_user_accessToken(token, callback) {
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log(req.headers["token"])
-  if (check_fb_user_accessToken(req.headers["token"])){
-    res.render('index');
-  }else{
-     res.redirect('/login');
+  check_fb_user_accessToken(req.headers["token"],function(re){
+    if(re){
+      res.render('index');
     }
+    else{
+      res.redirect('/login');
+    }
+  })
 });
 
 router.post('/' , function(req, res, next) {
