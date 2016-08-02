@@ -5,14 +5,8 @@ var auth = require('../authorization')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  auth.check_accessToken(req.headers.authorization,function(re){
-    if(re){
-      res.render('index');
-    }
-    else {
-      res.redirect('/login');
-    }
-  })
+  //req.headers.authorization
+    res.render('index',{login:'LOG IN'});
 });
 
 router.post('/' , function(req, res, next) {
