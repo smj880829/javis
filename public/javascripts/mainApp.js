@@ -33,11 +33,18 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
       $scope.logtext = "LOG IN"
     }else{
       FB.login(function(response){
-
       });
       $scope.logtext = "LOG OUT"
     }
     $rootScope.logflg = !$rootScope.logflg;
+  }
+
+  $scope.getLogin = function() {
+    if($rootScope.logflg)
+      return "LOG OUT"
+      else {
+        return "LOG IN"
+      }
   }
 
 }]
