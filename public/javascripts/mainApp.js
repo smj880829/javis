@@ -35,12 +35,13 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   $scope.log = function() {
     if($rootScope.logflg){
       FB.logout(function(response){
-        $scope.logtext = "LOG IN"
       });
+      $scope.logtext = "LOG IN"
     }else{
       FB.login(function(response){
-        $scope.logtext = "LOG OUT"
+
       });
+      $scope.logtext = "LOG OUT"
     }
     $rootScope.logflg = !$rootScope.logflg;
   }
