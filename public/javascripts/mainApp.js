@@ -14,8 +14,7 @@ app.config(function ($routeProvider) {
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
   $rootScope.chat_show = false;
   $rootScope.nav_show = true;
-  $rootScope.loginFlg = $scope.loginFlg;
-
+  
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
 
