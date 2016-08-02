@@ -6,7 +6,7 @@ var auth = require('../authorization')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //req.headers.authorization
-    res.render('index',{login:'LOG IN'});
+    res.render('index');
 });
 
 router.post('/' , function(req, res, next) {
