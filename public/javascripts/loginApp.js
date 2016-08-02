@@ -10,7 +10,22 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
              FB.api('/me?fields=name,email', function(response) {
                //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
                //$window.location.href = "/";
-               $http.get('/').then(successCallback, errorCallback);
+                      $http({
+                          	method: 'GET', //방식
+                          	url: '/' /* 통신할 URL */
+                      })
+                      .success(function(data, status, headers, config) {
+                      	if( data ) {
+                      		/* 성공적으로 결과 데이터가 넘어 왔을 때 처리 */
+                      	}
+                      	else {
+                      		/* 통신한 URL에서 데이터가 넘어오지 않았을 때 처리 */
+                      	}
+                      })
+                      .error(function(data, status, headers, config) {
+                      	/* 서버와의 연결이 정상적이지 않을 때 처리 */
+                      	console.log(status);
+                      });
              });
       } else {
 

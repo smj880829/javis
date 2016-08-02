@@ -5,11 +5,14 @@ var auth = require('../authorization')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var temp = JSON.stringify(req.headers)
-  console.log(req.headers.authorization);
-
-  res.render('index');
-
+  auth.check_accessToken(req.headers.authorization,function(re){
+    if(re){
+      res.render('index');
+    }
+    else {
+      res.redirect('/login');
+    }
+  })
 });
 
 router.post('/' , function(req, res, next) {
