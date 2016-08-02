@@ -4,12 +4,11 @@ var auth = require('../authorization');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', auth.check_fb_user_accessToken , function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
 router.post('/', auth.check_fb_user_accessToken , function(req, res, next) {
-  console.log('asd')
   res.render('index', { title: 'Express' });
 });
 
