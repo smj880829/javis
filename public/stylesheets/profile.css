@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {font-size: 52px;}
 h2 {font-size: 32px;}
 h3 {font-size: 30px;}
-h4 {font-size: 25px;}
+h4 {font-size: 25px;color:white}
 h5 {font-size: 18px;}
 h6 {font-size: 16px;}
 p {
@@ -38,6 +38,12 @@ a, a:active, a:focus {
   text-decoration: none;
 }
 a:hover {color: #FFD500;}
+.forcetext{font-size:25px;}
+.forcetext:hover {color: #FFD500; }
+
+.forcetext2{font-size:25px;color: skyblue; }
+.forcetext2:hover {color: blue; }
+
 img {display: block;}
 img {
   background: #CDCDCD;
