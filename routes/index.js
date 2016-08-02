@@ -9,10 +9,12 @@ var check_fb_user_accessToken = function(req, res, next) {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
-          if (temp.data.is_valid)
+          if (temp.data.is_valid){
+              console.log(`1`);
             return next();
-          else
+          }else{
             return   res.redirect('/login');
+            }
     }).on('error', (e) => {
       console.log(`auth error`);
     });
@@ -26,7 +28,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', check_fb_user_accessToken , function(req, res, next) {
+  console.log(`2`);
   res.render('index');
+  console.log(`3`);
 });
 
 router.get('/test', function(req, res, next) {
