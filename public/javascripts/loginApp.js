@@ -39,7 +39,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
   app.run(['$rootScope', '$window',function($rootScope, $window) {
       function statusChangeCallback(response) {
         if (response.status === 'connected') {
-          $window.location.href = "/";
+          //$window.location.href = "/";
         } else if (response.status === 'not_authorized') {
 
         } else {
