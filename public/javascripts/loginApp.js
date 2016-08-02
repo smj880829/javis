@@ -1,25 +1,15 @@
 var app = angular.module('loginApp', [])
 
-app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  function($scope, $window,$rootScope,socket,$http) {
+app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http','$httpProvider',  function($scope, $window,$rootScope,socket,$http,$httpProvider) {
 
   $scope.login = function() {
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
+            $httpProvider.defaults.headers.post['token'] = accessToken;
              FB.api('/me?fields=name,email', function(response) {
                //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
-               //$window.location.href = "/";
-               $http({
-                   url: '/',
-                   method: "POST",
-                   data: {'accessToken': accessToken }
-               })
-               .then(function(response) {
-                       // success
-               },
-               function(response) { // optional
-                       // failed
-               });
+               $window.location.href = "/";
 
              });
       } else {
