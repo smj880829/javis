@@ -25,6 +25,7 @@ var check_fb_user_accessToken = function(req, res, next) {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
+        console.log(`check token`);
         if (temp.data.is_valid)
           return next();
         else
