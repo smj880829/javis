@@ -26,9 +26,9 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
       }
   }
 
-  $scope.logout = function() {
+  $scope.log = function() {
     FB.logout(function(response){
-      $window.location.href = "/login";
+
     });
   }
 
@@ -106,11 +106,11 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
         console.log(response);
         if (response.status === 'connected') {
           get_me();
-
+          $rootScope.loginFlg = 'LOG OUT'
         } else if (response.status === 'not_authorized') {
-          $window.location.href = "/login";
+          $rootScope.loginFlg = 'LOG IN'
         } else {
-          $window.location.href = "/login";
+
         }
       }
 
