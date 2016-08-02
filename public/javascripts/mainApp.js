@@ -41,7 +41,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   }
 
   $rootScope.$on("chang_logintext", function(){
-    $window.alert("asd")
+    $window.alert($rootScope.logflg)
     if($rootScope.logflg){
       $scope.logtext = "LOG IN"
     }else{
