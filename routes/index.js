@@ -11,7 +11,7 @@ var check_fb_user_accessToken = function(req, res, next) {
           if (temp.data.is_valid){
             return next();
           }else{
-            return   res.redirect('/login');
+            return   res.redirect('/test');
             }
     }).on('error', (e) => {
       console.log(`auth error`);
