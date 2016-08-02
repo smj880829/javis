@@ -8,8 +8,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/',auth.check_fb_user_accessToken, function(req, res, next) {
-  res.redirect('/');
+router.post('/', auth.check_fb_user_accessToken , function(req, res, next) {
+  res.render('index', { title: 'Express' });
 });
 
 router.get('/test', function(req, res, next) {
