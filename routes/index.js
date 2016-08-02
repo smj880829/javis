@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', check_fb_user_accessToken , function(req, res, next) {
-  res.redirect('/');
+  res.render('index');
 });
 
 router.get('/test', function(req, res, next) {
