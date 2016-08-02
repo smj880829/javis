@@ -24,7 +24,6 @@ function check_accessToken(token, callback) {
   https.get(url2, (res) => {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
-      console.log('data');
         var temp = JSON.parse(chunk)
         callback(temp.data.is_valid)
     }).on('error', (e) => {
