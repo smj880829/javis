@@ -9,6 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', auth.check_fb_user_accessToken , function(req, res, next) {
+  console.log('asd')
   res.render('index', { title: 'Express' });
 });
 
