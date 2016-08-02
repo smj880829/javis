@@ -14,7 +14,7 @@ app.config(function ($routeProvider) {
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
   $rootScope.chat_show = false;
   $rootScope.nav_show = true;
-  
+
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
 
@@ -103,47 +103,37 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
 )
 
   app.run(['$rootScope', '$window',function($rootScope, $window) {
-    $rootScope.user = {};
+    function statusChangeCallback(response) {
+      console.log(response)
+      if (response.status === 'connected') {
+        //$window.location.href = "/";
+      } else if (response.status === 'not_authorized') {
 
-      function get_me() {
-        FB.api('/me?fields=name,email', function(response) {
-            $rootScope.user = response;
-        });
+      } else {
+
       }
+    }
 
-      function statusChangeCallback(response) {
-        console.log('statusChangeCallback');
-        console.log(response);
-        if (response.status === 'connected') {
-          get_me();
-          $rootScope.$emit("log_out", {});
-        } else if (response.status === 'not_authorized') {
-          $rootScope.$emit("log_in", {});
-        } else {
-          $rootScope.$emit("log_in", {});
-        }
-      }
+    $window.fbAsyncInit = function() {
+      FB.init({
+        appId: '706997686105976',
+        status: true,
+        cookie: true,
+        xfbml: true,
+        version: 'v2.7'
+      });
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    };
 
-      $window.fbAsyncInit = function() {
-        FB.init({
-          appId: '706997686105976',
-          status: true,
-          cookie: true,
-          xfbml: true,
-          version: 'v2.7'
-        });
-        FB.getLoginStatus(function(response) {
-          statusChangeCallback(response);
-        });
-      };
-
-      (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
   }]);
 
