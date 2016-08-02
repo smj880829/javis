@@ -5,7 +5,8 @@ var auth = require('../authorization')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(JSON.stringify(req.headers).authorization);
+  var temp = JSON.stringify(req.headers)
+  console.log(temp.authorization);
 
   res.render('index');
 
