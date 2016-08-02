@@ -26,16 +26,15 @@ var check_fb_user_accessToken = function(req, res, next) {
     re.setEncoding('utf8');
     re.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
-        flg = temp.data.is_valid
+          if (temp.data.is_valid)
+            return next();
+          else
+            return   res.redirect('/login');
     }).on('error', (e) => {
       console.log(`auth error`);
     });
   });
-console.log(flg)
-  if (flg)
-    return next();
-  else
-    return   res.redirect('/login');
+
 };
 
 
