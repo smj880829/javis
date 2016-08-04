@@ -101,7 +101,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
 }]
 )
 
-  app.run(['$rootScope', '$window','$http',function($rootScope, $window,$http) {
+  app.run(['$rootScope', '$window','$http','$location',function($rootScope, $window,$http,$location) {
     $rootScope.chat_show = false;
     $rootScope.nav_show = true;
 
