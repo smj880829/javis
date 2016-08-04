@@ -3,7 +3,9 @@ var app_access_token = '706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
 
 function access_check(method,token, callback) {
   if(method=='facebook'){
-        callback(check_accessToken_fb(token))
+    check_accessToken_fb(token,function(re){
+      callback(re)
+    })
   }
   else {
 
