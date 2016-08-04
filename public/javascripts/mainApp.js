@@ -12,8 +12,7 @@ app.config(function ($routeProvider) {
  })
 
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
-  $rootScope.chat_show = false;
-  $rootScope.nav_show = true;
+
 
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;
@@ -30,36 +29,18 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
     if($rootScope.logflg){
       FB.logout(function(response){
         $http.defaults.headers.common.loginmethod = 'out'
-        $window.location.href='/'
+        $window.location.href='/?log=false'
       });
 
     }else{
       FB.login(function(response){
         $http.defaults.headers.common.token = response.authResponse.accessToken;
         $http.defaults.headers.common.loginmethod = 'facebook'
-        $window.location.href='/'
+        $window.location.href='/?log=true'
       });
     }
   }
 
-  $rootScope.$on("flg_getlogin", function(){
-    console.log('call me!')
-    $scope.getLogin()
-  });
-
-
-    $scope.status = 'LOG IN/OUT'
-
-
-  $scope.getLogin = function() {
-    console.log($rootScope.logflg)
-    if($rootScope.logflg){
-        $scope.status = 'LOG OUT'
-      }
-      else {
-        $scope.status = 'LOG IN'
-      }
-  }
 }]
 )
 
@@ -121,6 +102,14 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
 )
 
   app.run(['$rootScope', '$window','$http',function($rootScope, $window,$http) {
+    $rootScope.chat_show = false;
+    $rootScope.nav_show = true;
+
+    if($location.search('log').log)
+      $rootScope.status = 'LOG OUT'
+    else
+      $rootScope.status = 'LOG IN'
+
     function statusChangeCallback(response) {
       console.log(response)
       if (response.status === 'connected') {
@@ -133,7 +122,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       } else {
           $rootScope.logflg = false;
       }
-      $rootScope.$emit("flg_getlogin");
+
     }
 
     $window.fbAsyncInit = function() {
