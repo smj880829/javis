@@ -10,7 +10,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
              $http.defaults.headers.common.Authorization = accessToken;
              $http.defaults.headers.common.loginMethod = 'facebook';
 
-             $document.getElementById('loginform').submit()
+             document.getElementById('loginform').submit()
       } else {
 
       }
