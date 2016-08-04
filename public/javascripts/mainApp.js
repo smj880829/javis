@@ -22,7 +22,7 @@ app.config(function ($routeProvider) {
    }
 
    $scope.del = function() {
-     localStorage.setItem("wow",null);
+     localStorage.removeItem("wow");
    }
 
  }]
