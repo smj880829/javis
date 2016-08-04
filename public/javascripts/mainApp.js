@@ -28,15 +28,12 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   $scope.log = function() {
     if($rootScope.logflg){
       FB.logout(function(response){
-        $http.defaults.headers.common.loginmethod = 'out'
-        $window.location.href='/?log=false'
+        $window.location.href='/'
       });
 
     }else{
       FB.login(function(response){
-        $http.defaults.headers.common.token = response.authResponse.accessToken;
-        $http.defaults.headers.common.loginmethod = 'facebook'
-        $window.location.href='/?log=true'
+        $window.location.href='/'
       });
     }
   }
@@ -104,11 +101,6 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
   app.run(['$rootScope', '$window','$http','$location',function($rootScope, $window,$http,$location) {
     $rootScope.chat_show = false;
     $rootScope.nav_show = true;
-
-    if($location.search('log')=='true')
-      $rootScope.status = 'LOG OUT'
-    else
-      $rootScope.status = 'LOG IN'
 
     function statusChangeCallback(response) {
       console.log(response)
