@@ -54,7 +54,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
         $scope.status = 'LOG IN'
       }
   }
-
+  $scope.getLogin();
 }]
 )
 
