@@ -29,8 +29,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
   $scope.log = function() {
     if($rootScope.logflg){
       FB.logout(function(response){
-        $http.defaults.headers.common.token = 'null';
-        $http.defaults.headers.common.loginmethod = 'facebook'
+        $window.location.href='/'
       });
     }else{
       FB.login(function(response){
