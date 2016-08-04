@@ -48,10 +48,10 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
 
   $scope.getLogin = function() {
     if($rootScope.logflg){
-        status = 'LOG IN'
+        $scope.status = 'LOG IN'
       }
       else {
-        status = 'LOG OUT'
+        $scope.status = 'LOG OUT'
       }
   }
 
