@@ -105,7 +105,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
 }]
 )
 
-  app.run(['$rootScope', '$window',function($rootScope, $window) {
+  app.run(['$rootScope', '$window','$http',function($rootScope, $window,$http) {
     function statusChangeCallback(response) {
       console.log(response)
       if (response.status === 'connected') {
