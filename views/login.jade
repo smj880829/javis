@@ -7,6 +7,8 @@ block content
         form.form
           input(type='text', placeholder='Username', name='email')
           input(type='password', placeholder='Password', name='password')
+          input(type='hidden', name='loginMethod')
+          input(type='hidden', name='loginMethod')
           button#login-button(type='submit') Login
           br
           button(ng-click='login()') FaceBook Login

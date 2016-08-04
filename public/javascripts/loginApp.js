@@ -1,33 +1,14 @@
 var app = angular.module('loginApp', [])
 
-app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  function($scope, $window,$rootScope,socket,$http) {
+app.controller('loginCtl',['$scope', '$window','$rootScope','$location','$http',  function($scope, $window,$rootScope,$location,$http) {
 
   $scope.login = function() {
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
              $http.defaults.headers.common.Authorization = accessToken;
-             $http.defaults.headers.common.wow = accessToken;
-             FB.api('/me?fields=name,email', function(response) {
-               //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
-               //$window.location.href = "/";
-                      $http({
-                          	method: 'GET', //방식
-                          	url: '/' /* 통신할 URL */
-                      })
-                      .success(function(data, status, headers, config) {
-                      	if( data ) {
-
-                      	}
-                      	else {
-                      		/* 통신한 URL에서 데이터가 넘어오지 않았을 때 처리 */
-                      	}
-                      })
-                      .error(function(data, status, headers, config) {
-                      	/* 서버와의 연결이 정상적이지 않을 때 처리 */
-                      	console.log(status);
-                      });
-             });
+             $http.defaults.headers.common.loginMethod = 'facebook';
+             $location.path("/");
       } else {
 
       }
