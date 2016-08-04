@@ -30,23 +30,25 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
     if($rootScope.logflg){
       FB.logout(function(response){
         $http.defaults.headers.common.loginmethod = 'out'
-        //$window.location.href='/'
+        $window.location.href='/'
       });
 
     }else{
       FB.login(function(response){
         $http.defaults.headers.common.token = response.authResponse.accessToken;
         $http.defaults.headers.common.loginmethod = 'facebook'
-        //$window.location.href='/'
+        $window.location.href='/'
       });
     }
   }
 
   $rootScope.$on("flg_getlogin", function(){
+    console.log('call me!')
     $scope.getLogin()
   });
 
   $scope.getLogin = function() {
+    console.log($rootScope.logflg)
     if($rootScope.logflg){
         $scope.status = 'LOG OUT'
       }
