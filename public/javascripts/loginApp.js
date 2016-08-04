@@ -1,9 +1,5 @@
 var app = angular.module('loginApp', [])
 
-app.config(['$httpProvider','$locationProvider',function($httpProvider,$locationProvider){
-
-}]);
-
 app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',  function($scope, $window,$rootScope,$document,$http) {
 
   $scope.login = function() {
@@ -14,7 +10,6 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
              $http.defaults.headers.common.loginMethod = 'facebook';
 
              document.getElementById('loginform').submit()
-
       } else {
 
       }
@@ -26,6 +21,8 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
 
   app.run(['$rootScope', '$window',function($rootScope, $window) {
       function statusChangeCallback(response) {
+
+        console.log(response)
         if (response.status === 'connected') {
           //$window.location.href = "/";
         } else if (response.status === 'not_authorized') {
