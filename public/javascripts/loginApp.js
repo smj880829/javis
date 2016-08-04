@@ -7,6 +7,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
              $http.defaults.headers.common.Authorization = accessToken;
+             $http.defaults.headers.common.wow = accessToken;
              FB.api('/me?fields=name,email', function(response) {
                //socket.emit('login',{'name':response.name,'id':response.id,'email':response.email,'accessToken': accessToken})
                //$window.location.href = "/";
@@ -16,7 +17,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','socket','$http',  f
                       })
                       .success(function(data, status, headers, config) {
                       	if( data ) {
-                          
+
                       	}
                       	else {
                       		/* 통신한 URL에서 데이터가 넘어오지 않았을 때 처리 */
