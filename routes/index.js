@@ -24,7 +24,7 @@ router.get('/test', function(req, res, next) {
         res.render('test');
     }
     else {
-      res.redirect('login_error');
+      res.render('login_error');
     }
   })
 });
