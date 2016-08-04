@@ -47,7 +47,12 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
     $scope.getLogin()
   });
 
-
+  if($rootScope.logflg){
+      $scope.status = 'LOG OUT'
+    }
+    else {
+      $scope.status = 'LOG IN'
+    }
 
   $scope.getLogin = function() {
     console.log($rootScope.logflg)
@@ -58,7 +63,6 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
         $scope.status = 'LOG IN'
       }
   }
-  $scope.getLogin();
 }]
 )
 
