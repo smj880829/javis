@@ -17,7 +17,7 @@ app.config(function ($routeProvider) {
      localStorage.setItem("wow", $scope.wow);
 
      socket.emit('check_storage');
-
+   }
  }]
  )
 
