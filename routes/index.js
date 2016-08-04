@@ -19,7 +19,14 @@ router.get('/profile' , function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
   console.log(req.headers)
-  res.render('test');
+  auth.access_check(req.headers.loginmethod,req.headers.token,function(re){
+    if(re){
+        res.render('test');
+    }
+    else {
+      res.render('login_error');
+    }
+  })
 });
 
 router.get('/main' , function(req, res, next) {
@@ -28,7 +35,6 @@ router.get('/main' , function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-
   res.render('login', { title: 'welcome' });
 });
 
