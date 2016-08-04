@@ -42,11 +42,16 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
     }
   }
 
+  $rootScope.$on("flg_getlogin", function(){
+    $scope.getLogin()
+  });
+
   $scope.getLogin = function() {
-    if($rootScope.logflg)
-      return "LOG OUT"
+    if($rootScope.logflg){
+        status = 'LOG IN'
+      }
       else {
-        return "LOG IN"
+        status = 'LOG OUT'
       }
   }
 
@@ -123,7 +128,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       } else {
           $rootScope.logflg = false;
       }
-
+      $rootScope.$emit("flg_getlogin", {});
     }
 
     $window.fbAsyncInit = function() {
@@ -146,6 +151,8 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
+
+    $rootScope.$emit("init_chat", {});
 
   }]);
 
