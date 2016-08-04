@@ -3,7 +3,7 @@ var db = require('./MongoConnector/DAO')
 var conf = require('./MongoConnector/Conf')
 
 var LocalStorage = require('node-localstorage').LocalStorage,
-localStorage = new LocalStorage('./test');
+localStorage = new LocalStorage('./');
 
 
 module.exports = function(options) {
