@@ -21,10 +21,6 @@ app.config(function ($routeProvider) {
      socket.emit('check_storage');
    }
 
-   $scope.del = function() {
-     localStorage.setItem("wow",null);
-   }
-
  }]
  )
 
@@ -40,6 +36,19 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
       else {
         $rootScope.$emit("del_chat", {});
       }
+  }
+
+  $scope.log = function() {
+    if($rootScope.logflg){
+      FB.logout(function(response){
+        $window.location.href='/'
+      });
+
+    }else{
+      FB.login(function(response){
+        $window.location.href='/'
+      });
+    }
   }
 
 }]
@@ -105,6 +114,42 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
   app.run(['$rootScope', '$window','$http','$location',function($rootScope, $window,$http,$location) {
     $rootScope.chat_show = false;
     $rootScope.nav_show = true;
+
+    function statusChangeCallback(response) {
+      console.log(response)
+      if (response.status === 'connected') {
+          $rootScope.logflg = true;
+
+          $http.defaults.headers.common.token = response.authResponse.accessToken;
+          $http.defaults.headers.common.loginmethod = 'facebook'
+      } else if (response.status === 'not_authorized') {
+          $rootScope.logflg = false;
+      } else {
+          $rootScope.logflg = false;
+      }
+
+    }
+
+    $window.fbAsyncInit = function() {
+      FB.init({
+        appId: '706997686105976',
+        status: true,
+        cookie: true,
+        xfbml: true,
+        version: 'v2.7'
+      });
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+      });
+    };
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
     $rootScope.$emit("init_chat", {});
 
