@@ -1,6 +1,10 @@
 var app = angular.module('loginApp', [])
 
-app.controller('loginCtl',['$scope', '$window','$rootScope','$location','$http',  function($scope, $window,$rootScope,$location,$http) {
+app.config(['$httpProvider','$locationProvider',function($httpProvider,$locationProvider){
+
+}]);
+
+app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',  function($scope, $window,$rootScope,$document,$http) {
 
   $scope.login = function() {
     FB.login(function(response){
@@ -8,7 +12,8 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$location','$http',
       if (response.authResponse) {
              $http.defaults.headers.common.Authorization = accessToken;
              $http.defaults.headers.common.loginMethod = 'facebook';
-             $window.location.href = '/';
+
+             $document.loginform.action='/';
       } else {
 
       }

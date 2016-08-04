@@ -1,6 +1,15 @@
 var app_access_token = '706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
 
 
+function access_check(method,token, callback) {
+  if(method=='facebook'){
+        callback(check_accessToken_fb(token))
+  }
+  else {
+
+  }
+};
+
 /*
 function get_app_access_token(){
   var https = require('https')
@@ -18,7 +27,7 @@ function get_app_access_token(){
 get_app_access_token();
 */
 
-function check_accessToken(token, callback) {
+function check_accessToken_fb(token, callback) {
   var https = require('https')
   var url2= 'https://graph.facebook.com/debug_token?input_token='+token+'&access_token=706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
   https.get(url2, (res) => {
@@ -28,9 +37,9 @@ function check_accessToken(token, callback) {
         callback(temp.data.is_valid)
     }).on('error', (e) => {
       console.log(`auth error`);
+      callback(false)
     });
   });
 };
 
-
-exports.check_accessToken = check_accessToken;
+exports.access_check = access_check;
