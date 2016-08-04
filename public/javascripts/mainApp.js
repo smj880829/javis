@@ -105,7 +105,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
     $rootScope.chat_show = false;
     $rootScope.nav_show = true;
 
-    if($location.search('log').log)
+    if($location.search('log')=='true')
       $rootScope.status = 'LOG OUT'
     else
       $rootScope.status = 'LOG IN'
