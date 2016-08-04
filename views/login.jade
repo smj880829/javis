@@ -4,7 +4,7 @@ block content
     .wrapper
       .container
         h1= title
-        form.form(name='loginform',method='post',action='/')
+        form.form(name='loginform',method='post',action='/',id='loginform')
           input(type='text', placeholder='Username', name='email')
           input(type='password', placeholder='Password', name='password')
           button#login-button(type='submit') Login
