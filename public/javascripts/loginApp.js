@@ -8,7 +8,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$location','$http',
       if (response.authResponse) {
              $http.defaults.headers.common.Authorization = accessToken;
              $http.defaults.headers.common.loginMethod = 'facebook';
-             $location.path("/");
+             $window.location.href = '/';
       } else {
 
       }
