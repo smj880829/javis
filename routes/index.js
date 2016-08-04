@@ -26,6 +26,7 @@ router.get('/test', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
+  console.log(req.headers)
   res.render('login', { title: 'welcome' });
 });
 
