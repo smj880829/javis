@@ -13,11 +13,14 @@ app.config(function ($routeProvider) {
 
  app.controller('testCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
-   $scope.showweb = function() {
+   $scope.set = function() {
      localStorage.setItem("wow", $scope.wow);
+   }
+   $scope.show = function() {
      $window.alert(localStorage.wow)
      socket.emit('check_storage');
    }
+
  }]
  )
 
