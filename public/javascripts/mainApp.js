@@ -32,6 +32,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
         $http.defaults.headers.common.loginmethod = 'out'
         $window.location.href='/'
       });
+
     }else{
       FB.login(function(response){
         $http.defaults.headers.common.token = response.authResponse.accessToken;
@@ -39,7 +40,6 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
         $window.location.href='/'
       });
     }
-    $rootScope.logflg = !$rootScope.logflg;
   }
 
   $scope.getLogin = function() {
