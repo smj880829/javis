@@ -11,6 +11,16 @@ app.config(function ($routeProvider) {
 //otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.
  })
 
+ app.controller('testCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
+
+   $scope.showweb = function() {
+     localStorage.setItem("wow", $scope.wow);
+
+     socket.emit('check_storage');
+
+ }]
+ )
+
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
 

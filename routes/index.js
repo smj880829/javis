@@ -3,6 +3,7 @@ var router = express.Router();
 var auth = require('../authorization')
 
 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //req.headers.authorization
@@ -12,6 +13,7 @@ router.get('/', function(req, res, next) {
 router.post('/' , function(req, res, next) {
   res.render('index');
 });
+
 
 router.get('/profile' , function(req, res, next) {
   res.render('profile');
