@@ -3,6 +3,7 @@ var app = angular.module('loginApp', [])
 app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',  function($scope, $window,$rootScope,$document,$http) {
 
   $scope.login = function() {
+    /*
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
@@ -14,7 +15,8 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
       } else {
 
       }
-    });
+    }); */
+    FB.login();
   }
 
 }]
