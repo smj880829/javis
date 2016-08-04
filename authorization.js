@@ -8,7 +8,7 @@ function access_check(method,token, callback) {
     })
   }
   else {
-
+    callback(false)
   }
 };
 
