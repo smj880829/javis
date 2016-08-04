@@ -3,21 +3,17 @@ var app = angular.module('loginApp', [])
 app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',  function($scope, $window,$rootScope,$document,$http) {
 
   $scope.login = function() {
-    /*
+
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
              $http.defaults.headers.common.Authorization = accessToken;
              $http.defaults.headers.common.loginMethod = 'facebook';
              $window.alert(accessToken)
-
-             document.getElementById('loginform').submit()
       } else {
 
       }
-    }); */
-    $window.alert('asd')
-    FB.login();
+    });
   }
 
 }]
