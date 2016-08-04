@@ -54,7 +54,6 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
         $scope.status = 'LOG IN'
       }
   }
-  $scope.getLogin();
 }]
 )
 
@@ -128,7 +127,7 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
       } else {
           $rootScope.logflg = false;
       }
-      $rootScope.$emit("flg_getlogin", {});
+      $rootScope.$emit("flg_getlogin");
     }
 
     $window.fbAsyncInit = function() {
