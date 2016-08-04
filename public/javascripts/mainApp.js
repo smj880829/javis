@@ -46,7 +46,14 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
     console.log('call me!')
     $scope.getLogin()
   });
-  $scope.status = "LOG IN"
+
+  if($rootScope.logflg){
+      $scope.status = 'LOG OUT'
+    }
+    else {
+      $scope.status = 'LOG IN'
+    }
+
   $scope.getLogin = function() {
     console.log($rootScope.logflg)
     if($rootScope.logflg){
