@@ -16,6 +16,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
 
       }
     }); */
+    $window.alert('asd')
     FB.login();
   }
 
