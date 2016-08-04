@@ -6,14 +6,10 @@ var auth = require('../authorization')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //req.headers.authorization
-  console.log("getgetgetgetget")
-  console.log(req.headers)
-
     res.render('index');
 });
 
 router.post('/' , function(req, res, next) {
-  console.log(req.headers)
   res.render('index');
 });
 
@@ -22,11 +18,17 @@ router.get('/profile' , function(req, res, next) {
 });
 
 router.get('/test', function(req, res, next) {
+  console.log(req.headers)
   res.render('test');
 });
 
-router.get('/login', function(req, res, next) {
+router.get('/main' , function(req, res, next) {
   console.log(req.headers)
+  res.render('main');
+});
+
+router.get('/login', function(req, res, next) {
+
   res.render('login', { title: 'welcome' });
 });
 
