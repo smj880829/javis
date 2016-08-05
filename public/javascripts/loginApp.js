@@ -5,7 +5,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
   $scope.login = function() {
 
     FB.api('/me?fields=id,name,email', function(response) {
-        $window.alert(response.email)
+        $window.alert(response.email + response.authResponse.accessToken)
     });
     /*
     FB.login(function(response){
