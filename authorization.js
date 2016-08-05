@@ -84,7 +84,7 @@ function getLocalToken(callback){
 
 function checkLocalToken(inputToken,callback){
   var date = new Date();
-
+  console.log(inputToken)
   var decoded = jwt.decode(inputToken, secret);
     //console.log(decoded); //=> { foo: 'bar' }
     if(date > decoded.expiration)

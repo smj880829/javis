@@ -22,6 +22,7 @@ router.get('/profile' , function(req, res, next) {
 router.get('/test', function(req, res, next) {
   console.log(req.headers)
   authorization.checkLocalToken(req.headers.token,function(re){
+    console.log(re)
     if(re)
       res.render('test');
     else
