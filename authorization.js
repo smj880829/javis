@@ -3,8 +3,8 @@ var db = require('./MongoConnector/DAO')
 
 var app_access_token = '706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
 var secret = 'wow';
-var authorization = function(meth) {        //생성자 선언
-    this.method =  meth;
+var authorization = function() {        //생성자 선언
+    this.method =  '';
   this.email = ''
   this.pass = ''
   this.externaltoken = ''
@@ -12,10 +12,12 @@ var authorization = function(meth) {        //생성자 선언
   this.id = ''
   this.name = ''
 
-  console.log("new ok");
-
+  this.method = function(input){
+  	this.method = input;
+    return this;
+  };
+  
   this.email = function(input){
-    console.log("1.5");
   	this.email = input;
     return this;
   };
