@@ -46,7 +46,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         localStorage.setItem("localtoken", response.token);
         $window.location.href = '/';
       }else{
-        $window.location.href = '/login';
+        angular.element('#title').html("다시 시도해주세요");
       }
     }).finally(function() {
         console.log('Complete');
