@@ -52,7 +52,7 @@ router.post('/login', function(req, res, next) {
     auth.check_user(function(re){
           if(re){
            token_ctl.getNewToken(function(token){
-             res.cookie('token',token,{expires: new Date(Date.now() + 60000),httpOnly: true}
+             res.cookie('token',token,{expires: new Date(Date.now() + 60000),httpOnly: true})
              res.send({'token' : token,'check':'true'});
           })
         }else{
