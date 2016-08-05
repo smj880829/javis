@@ -87,11 +87,12 @@ function getLocalToken(callback){
 
 authorization.prototype.checkLocalToken = function(inputToken,callback){
   var date = new Date();
-  console.log(date)
+
   var decoded = jwt.decode(inputToken, secret);
   var date2 = new Date(decoded.year,decoded.month,decoded.day,decoded.hour,decoded.minutes,decoded.sec);
     //console.log(decoded); //=> { foo: 'bar' }
-
+    console.log(date)
+    console.log(date2)
     if(date.getTime() > date2.getTime())
       callback(true)
     else
