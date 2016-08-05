@@ -3,7 +3,7 @@ var router = express.Router();
 var authorization = require('../authorization')
 
 
-var auth = new authorization()
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //req.headers.authorization
@@ -21,6 +21,7 @@ router.get('/profile' , function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
 
+  var auth = new authorization()
   auth.checkLocalToken(req.headers.token,function(re){
     if(re){
       res.render('test');
@@ -40,7 +41,7 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-
+    var auth = new authorization()
     auth.method(req.body.loginmethod).email(req.body.email).pass(req.body.password).token(req.body.accesstoken).id(req.body.id).name(req.body.name)
     var token = '';
     auth.check_user(function(re){
