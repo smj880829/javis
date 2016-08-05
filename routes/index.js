@@ -4,11 +4,20 @@ var authorization = require('../authorization')
 var token_ctl = require('../controller_token')
 
 
+function authChecker(req, res, next) {
+  token_ctl.checkToken(req.cookies.token,function(re){
+    if(re){
+      next();
+    }else{
+      res.redirect("/login");
+      }
+  })
+}
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',authChecker, function(req, res, next) {
   //req.headers.authorization
-  console.log(req.cookies.token)
     res.render('index');
 });
 

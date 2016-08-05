@@ -10,6 +10,10 @@ function($scope, $window,$rootScope,$document,$http) {
     $scope.loginMethod = 'nomal';
   }
 
+  $scope.logout = function() {
+
+  }
+
   $scope.FBlogin = function() {
       $scope.accessToken = $rootScope.accesstoken
       $scope.loginMethod = 'facebook';
