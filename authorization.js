@@ -17,6 +17,7 @@ var authorization = function(meth) {        //생성자 선언
 
 authorization.prototype.email = function(input){
 	this.email = input;
+  console.log("email");
 };
 
 authorization.prototype.pass = function(input){
