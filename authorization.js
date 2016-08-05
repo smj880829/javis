@@ -78,7 +78,8 @@ function getLocalToken(callback){
   var date = new Date();
   var min = date.getMinutes();
   date.setMinutes(min + 1);
-  var payload = { 'email' : this.email, 'expiration':date };
+
+  var payload = { 'email' : this.email, 'year':date.getYear(),'month':date.getMonth(),'day':date.getDay(),'hour':date.getHours(),'minutes':date.getMinutes(),'sec':date.getSeconds() };
   console.log(secret)
   var token = jwt.encode(payload, secret);
   callback(token)
@@ -88,10 +89,10 @@ authorization.prototype.checkLocalToken = function(inputToken,callback){
   var date = new Date();
   console.log(date)
   var decoded = jwt.decode(inputToken, secret);
+  var date2 = new Date(decoded.year,decoded.month,decoded.day,decoded.hour,decoded.minutes,decoded.sec);
     //console.log(decoded); //=> { foo: 'bar' }
-    console.log(decoded.expiration)
-    console.log(typeof(decoded.expiration))
-    if(date.getTime() > decoded.expiration)
+
+    if(date.getTime() > date2.getTime())
       callback(true)
     else
       callback(false)
