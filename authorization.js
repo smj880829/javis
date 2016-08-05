@@ -45,13 +45,14 @@ var authorization = function(meth) {        //생성자 선언
 authorization.prototype.check_user = function(callback){
   console.log(this.method + this.email)
   var check = false;
-
-  if(this.method == 'facebook'){
-    check_accessToken_fb(this.externaltoken,function(re){ check = re })
-  }else{
-
+  switch (this.method) {
+    case 'nomal'    :
+                 break;
+    case 'facebook'   : check_accessToken_fb(this.externaltoken,function(re){ check = re })
+                 break;
+    default    :
+                 break;
   }
-
   console.log(check)
   if(check){
     getLocalToken(function(re){

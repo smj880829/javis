@@ -40,10 +40,8 @@ router.post('/login', function(req, res, next) {
     var token = '';
     auth.check_user(function(re){
       token = re
+      res.send({'token' : token});
     });
-    console.log(token);
-
-    res.send({'token' : token});
 });
 
 router.get('/logout', function(req, res, next) {
