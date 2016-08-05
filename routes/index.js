@@ -20,9 +20,10 @@ router.get('/profile' , function(req, res, next) {
 });
 
 router.get('/test', function(req, res, next) {
+  res.render('test');
   authorization.checkLocalToken(req.headers.token,function(re){
     if(re){
-      res.render('test');
+
     }else{
       res.render('login_error');
       }
