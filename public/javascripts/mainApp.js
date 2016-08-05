@@ -35,7 +35,7 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
    $scope.logout = function() {
         localStorage.removeItem("token");
         $cookies.remove('token');
-        $window.location.href = '/';
+        $window.location.href = '/login';
    }
 
   $scope.chatgotoBottom = function() {
