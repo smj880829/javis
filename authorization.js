@@ -93,11 +93,11 @@ authorization.prototype.checkLocalToken = function(inputToken,callback){
     //console.log(decoded); //=> { foo: 'bar' }
     console.log(date)
     console.log(date2)
-    if(date.getTime() > date2.getTime())
+    if(date.getTime() < date2.getTime()){
       callback(true)
-    else
+    }else{
       callback(false)
-
+      }
 }
 
 /*
