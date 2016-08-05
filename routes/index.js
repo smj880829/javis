@@ -3,7 +3,7 @@ var router = express.Router();
 var authorization = require('../authorization')
 var token_ctl = require('../controller_token')
 
-  var auth = new authorization()
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -40,7 +40,7 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-
+  var auth = new authorization()
     auth.method(req.body.loginmethod)
     .email(req.body.email)
     .pass(req.body.password)

@@ -3,6 +3,7 @@ var db = require('./MongoConnector/DAO')
 
 var app_access_token = '706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
 var secret = 'wow';
+
 var authorization = function() {        //생성자 선언
     this.method =  '';
   this.email = ''
@@ -59,36 +60,6 @@ authorization.prototype.check_user = function(callback){
                  break;
   }
 
-}
-
-function check_localuser(callback){
-
-}
-
-function getLocalToken(callback){
-  var date = new Date();
-  var min = date.getMinutes();
-  date.setMinutes(min + 1);
-
-  var payload = { 'email' : this.email, 'year':date.getFullYear(),'month':date.getMonth(),'day':date.getDay(),'hour':date.getHours(),'minutes':date.getMinutes(),'sec':date.getSeconds() };
-  console.log(secret)
-  var token = jwt.encode(payload, secret);
-  callback(token)
-}
-
-authorization.prototype.checkLocalToken = function(inputToken,callback){
-  var date = new Date();
-
-  var decoded = jwt.decode(inputToken, secret);
-  var date2 = new Date(decoded.year,decoded.month,decoded.day,decoded.hour,decoded.minutes,decoded.sec);
-    //console.log(decoded); //=> { foo: 'bar' }
-    console.log(date)
-    console.log(date2)
-    if(date.getTime() < date2.getTime()){
-      callback(true)
-    }else{
-      callback(false)
-      }
 }
 
 /*
