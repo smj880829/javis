@@ -45,14 +45,14 @@ var authorization = function(meth) {        //생성자 선언
 
 
 function check_user(callback){
-  console.log(method + email)
+  console.log(this.method + this.email)
   var check = false;
-  switch (method) {
+  switch (this.method) {
     case 'nomal'    :
                  break;
-    case 'facebook'   : check_accessToken_fb(externaltoken,function(re){ check = re })
+    case 'facebook'   : check_accessToken_fb(this.externaltoken,function(re){ check = re })
                  break;
-    default    : callback(false)
+    default    : 
                  break;
   }
 
