@@ -5,14 +5,16 @@ var token_ctl = require('../controller_token')
 
 
 function authChecker(req, res, next) {
-  console.log(req.cookies)
+  if(req.cookies.token != null){
   token_ctl.checkToken(req.cookies.token,function(re){
     if(re){
       next();
     }else{
-      res.render('login', { title: 'Express' });
+      res.redirect('/login')
       }
   })
+  }
+  res.redirect('/login')
 }
 
 
