@@ -42,9 +42,7 @@ var authorization = function(meth) {        //생성자 선언
 
 }
 
-
-
-function check_user(callback){
+authorization.prototype.check_user = function(callback){
   console.log(this.method + this.email)
   var check = false;
   switch (this.method) {
@@ -52,7 +50,7 @@ function check_user(callback){
                  break;
     case 'facebook'   : check_accessToken_fb(this.externaltoken,function(re){ check = re })
                  break;
-    default    : 
+    default    :
                  break;
   }
 
