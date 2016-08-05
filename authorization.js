@@ -89,8 +89,9 @@ authorization.prototype.checkLocalToken = function(inputToken,callback){
   console.log(date)
   var decoded = jwt.decode(inputToken, secret);
     //console.log(decoded); //=> { foo: 'bar' }
-    console.log(decoded.expiration)
-    if(date > decoded.expiration)
+    console.log(decoded.expiration.getTime())
+    var date2 = new Date(decoded.expiration);
+    if(date.getTime() > date2.getTime())
       callback(true)
     else
       callback(false)
