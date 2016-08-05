@@ -48,8 +48,6 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
       }else{
         angular.element('#title').html("다시 시도해주세요");
       }
-    }).error(function(response) {
-        $window.location.href = '/login';
     }).finally(function() {
         console.log('Complete');
     });
