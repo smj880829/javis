@@ -72,7 +72,7 @@ function check_localuser(callback){
 
 }
 
-function getLocalToken(callback){
+authorization.prototype.getLocalToken = function(callback){
   var date = new Date();
   var min = date.getMinutes();
   date.setMinutes(min + 1);
@@ -82,7 +82,7 @@ function getLocalToken(callback){
   callback(token)
 }
 
-function checkLocalToken(inputToken,callback){
+authorization.prototype.checkLocalToken = function(inputToken,callback){
   var date = new Date();
 
   var decoded = jwt.decode(inputToken, secret);
@@ -118,7 +118,6 @@ function check_accessToken_fb(token, callback) {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
-        console.log(temp.data.is_valid)
         callback(temp.data.is_valid)
     }).on('error', (e) => {
       console.log(`auth error`);
