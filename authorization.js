@@ -16,7 +16,7 @@ var authorization = function() {        //생성자 선언
   	this.method = input;
     return this;
   };
-  
+
   this.email = function(input){
   	this.email = input;
     return this;
@@ -84,7 +84,7 @@ function getLocalToken(callback){
   callback(token)
 }
 
-function checkLocalToken(inputToken,callback){
+authorization.prototype.checkLocalToken = function(inputToken,callback){
   var date = new Date();
   console.log(inputToken)
   var decoded = jwt.decode(inputToken, secret);
