@@ -9,13 +9,20 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
  $routeProvider
 //$routeProvider의 when 메소드를 이용하면 특정 URL에 해당하는 라우트를 설정한다. 이때 라우트 설정객체를 전달하는데 <ng-view>태그에 삽입할 탬플릿에 해당하는 url을 설정객체의 templateUrl 속성으로 정의한다.
    .when('/main', {templateUrl: '/main'})
-   .when('/test', {templateUrl: '/test'})
+   .when('/#test', {templateUrl: '/test'})
 //라우트 설정객체에 controller 속성을 통하여 해당 화면에 연결되는 컨트롤러 이름을 설정할 수 있다.
    .otherwise({redirectTo: '/'});
 //otherwise 메소드를 통하여 브라우저의 URL이 $routeProivder에서 정의되지 않은 URL일 경우에 해당하는 설정을 할 수 있다. 여기선 ‘/home’으로 이동시키고 있다.
  }])
 
- app.controller('testCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
+ app.controller('testCtl',['$scope',
+ '$window',
+ '$http',
+ 'socket',
+ '$log',
+ '$anchorScroll',
+ '$location',
+ '$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
    $scope.set = function() {
      localStorage.setItem("wow", $scope.wow);
