@@ -32,6 +32,11 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
 app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',
  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
+   $scope.logout = function() {
+        localStorage.removeItem("token");
+        $cookies.remove('token');
+        $window.location.href = '/';
+   }
 
   $scope.chatgotoBottom = function() {
     $rootScope.chat_show = !$rootScope.chat_show;

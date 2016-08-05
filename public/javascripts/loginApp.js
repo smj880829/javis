@@ -10,10 +10,7 @@ function($scope, $window,$rootScope,$document,$http,$cookies) {
     $scope.loginMethod = 'nomal';
   }
 
-  $scope.logout = function() {
-       localStorage.removeItem("token");
-       $cookies.remove('token');
-  }
+
 
   $scope.FBlogin = function() {
       $scope.accessToken = $rootScope.accesstoken
