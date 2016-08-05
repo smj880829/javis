@@ -12,6 +12,7 @@ var authorization = function(meth) {        //생성자 선언
   this.id = ''
   this.name = ''
   this.secret = 'wow';
+  console.log("new ok");
 }
 
 authorization.prototype.email = function(input){
