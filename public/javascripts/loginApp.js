@@ -50,6 +50,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
       }
     }).finally(function() {
         console.log('Complete');
+        angular.element('#title').html("다시 시도해주세요");
     });
 
   }
