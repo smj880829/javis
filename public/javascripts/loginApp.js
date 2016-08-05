@@ -50,6 +50,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
       }
     }).finally(function() {
         console.log('Complete');
+        $window.location.href = '/login';
     });
 
   }
