@@ -9,7 +9,7 @@ function authChecker(req, res, next) {
     if(re){
       next();
     }else{
-      res.redirect("/login");
+      res.render('login', { title: 'Express' });
       }
   })
 }
