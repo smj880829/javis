@@ -79,7 +79,7 @@ function getLocalToken(callback){
   var min = date.getMinutes();
   date.setMinutes(min + 1);
 
-  var payload = { 'email' : this.email, 'year':date.getYear(),'month':date.getMonth(),'day':date.getDay(),'hour':date.getHours(),'minutes':date.getMinutes(),'sec':date.getSeconds() };
+  var payload = { 'email' : this.email, 'year':date.getFullYear(),'month':date.getMonth(),'day':date.getDay(),'hour':date.getHours(),'minutes':date.getMinutes(),'sec':date.getSeconds() };
   console.log(secret)
   var token = jwt.encode(payload, secret);
   callback(token)
