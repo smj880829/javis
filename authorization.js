@@ -77,7 +77,7 @@ function getLocalToken(callback){
   var min = date.getMinutes();
   date.setMinutes(min + 1);
   var payload = { 'email' : this.email, 'expiration':date };
-  console.log(this.secret)
+  console.log(secret)
   var token = jwt.encode(payload, secret);
   callback(token)
 }

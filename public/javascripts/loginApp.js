@@ -42,7 +42,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
     }).success(function(response) {
-        $window.alert(response.data.token)
+        $window.alert(response.token)
     }).finally(function() {
         console.log('Complete');
     });
