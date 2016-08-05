@@ -92,27 +92,3 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
       }(document, 'script', 'facebook-jssdk'));
 
   }]);
-
-  app.factory('socket', function ($rootScope) {
-    var socket = io.connect('http://54.199.240.31/');
-    return {
-      on: function (eventName, callback) {
-        socket.on(eventName, function () {
-          var args = arguments;
-          $rootScope.$apply(function () {
-            callback.apply(socket, args);
-          });
-        });
-      },
-      emit: function (eventName, data, callback) {
-        socket.emit(eventName, data, function () {
-          var args = arguments;
-          $rootScope.$apply(function () {
-            if (callback) {
-              callback.apply(socket, args);
-            }
-          });
-        })
-      }
-    };
-  })
