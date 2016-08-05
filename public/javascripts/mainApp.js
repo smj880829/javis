@@ -29,7 +29,7 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
  }]
  )
 
-app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope','$cookies,'
+app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope','$cookies',
  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope,$cookies) {
 
    $scope.logout = function() {
