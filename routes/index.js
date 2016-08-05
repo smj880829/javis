@@ -45,8 +45,12 @@ router.post('/login', function(req, res, next) {
     auth.method(req.body.loginmethod).email(req.body.email).pass(req.body.password).token(req.body.accesstoken).id(req.body.id).name(req.body.name)
     var token = '';
     auth.check_user(function(re){
-      token = re
-      res.send({'token' : token});
+          if(re != null){
+          token = re
+          res.send({'token' : token,'check':'ok'});
+        }else{
+            res.send({'check':'on'});
+        }
     });
 });
 
