@@ -53,7 +53,7 @@ authorization.prototype.check_user = function(callback){
     default    :
                  break;
   }
-
+  console.log(check)
   if(check){
     getLocalToken(function(re){
       callback(re);
@@ -114,7 +114,6 @@ function check_accessToken_fb(token, callback) {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
-        console.log(temp)
         callback(temp.data.is_valid)
     }).on('error', (e) => {
       console.log(`auth error`);
