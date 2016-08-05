@@ -5,7 +5,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
   $scope.login = function() {
 
     FB.api('/me?fields=id,name,email', function(response) {
-        $window.alert(response.email + response.authResponse.accessToken)
+        $window.alert(response.email + $rootScope.accesstoken)
     });
     /*
     FB.login(function(response){
@@ -25,11 +25,12 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
 )
 
   app.run(['$rootScope', '$window',function($rootScope, $window) {
+    $rootScope.accesstoken = "";
       function statusChangeCallback(response) {
 
         console.log(response)
         if (response.status === 'connected') {
-          //$window.location.href = "/";
+          $rootScope.accesstoken = response.authResponse.accessToken;
         } else if (response.status === 'not_authorized') {
           FB.login()
         } else {
