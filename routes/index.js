@@ -36,7 +36,10 @@ router.get('/login', function(req, res, next) {
 router.post('/login', function(req, res, next) {
     console.log(req.body);
     var auth = new authorization(req.body.loginmethod).email(req.body.email).pass(req.body.password).token(req.body.accesstoken).id(req.body.id).name(req.body.name)
-    var token = auth.check_user();
+    var token = '';
+    auth.check_user(function(re){
+      re = token
+    });
     console.log(token);
 
     res.send({'token' : token});
