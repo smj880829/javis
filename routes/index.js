@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var authorization = require('../authorization')
-var jwt = require('jwt-simple');
+
 
 
 /* GET home page. */
@@ -23,7 +23,7 @@ router.get('/test', function(req, res, next) {
   console.log(req.headers)
     var date = new Date();
 
-    var decoded = jwt.decode(inputToken, 'wow');
+    var decoded = jwt.decode(req.headers.token, 'wow');
     console.log(decoded)
       //console.log(decoded); //=> { foo: 'bar' }
       if(date > decoded.expiration)
