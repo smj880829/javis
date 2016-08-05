@@ -10,10 +10,9 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
   }
 
   $scope.FBlogin = function() {
-    FB.login(function(response){
-      $scope.accessToken = response.authResponse.accessToken;
+      $scope.accessToken = $rootScope.accesstoken
       $scope.loginMethod = 'facebook';
-      if (response.authResponse) {
+
         FB.api('/me?fields=email,name,id', function(res) {
             $scope.email = res.email;
             $scope.id = res.id;
@@ -24,12 +23,6 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
 
          //$http.defaults.headers.common.Authorization = accessToken;
          //$http.defaults.headers.common.loginMethod = 'facebook';
-
-      } else {
-
-      }
-    });
-
 
   }
 
