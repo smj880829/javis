@@ -1,7 +1,7 @@
 var app = angular.module('loginApp', [])
 
-app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
-function($scope, $window,$rootScope,$document,$http) {
+app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http','$cookies',
+function($scope, $window,$rootScope,$document,$http,$cookies) {
   $scope.loginMethod ='';
   $scope.accessToken ='';
   $scope.id = ''
@@ -11,7 +11,8 @@ function($scope, $window,$rootScope,$document,$http) {
   }
 
   $scope.logout = function() {
-
+       localStorage.removeItem("token");
+       $cookies.remove('token');
   }
 
   $scope.FBlogin = function() {

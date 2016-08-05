@@ -24,10 +24,6 @@ router.get('/',authChecker, function(req, res, next) {
     res.render('index');
 });
 
-router.post('/' , function(req, res, next) {
-  res.render('index');
-});
-
 
 router.get('/profile' , function(req, res, next) {
   res.render('profile');
@@ -44,7 +40,6 @@ router.get('/test', function(req, res, next) {
 });
 
 router.get('/main' , function(req, res, next) {
-  console.log(req.headers)
   res.render('main');
 });
 
@@ -53,6 +48,7 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
+
   var auth = new authorization()
     auth.method(req.body.loginmethod)
     .email(req.body.email)
