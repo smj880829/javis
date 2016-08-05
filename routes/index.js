@@ -20,7 +20,6 @@ router.get('/profile' , function(req, res, next) {
 });
 
 router.get('/test', function(req, res, next) {
-  console.log(req.headers)
   authorization.checkLocalToken(req.headers.token,function(re){
     if(re){
       res.render('test');
@@ -28,7 +27,6 @@ router.get('/test', function(req, res, next) {
       res.render('login_error');
       }
   })
-
 });
 
 router.get('/main' , function(req, res, next) {
