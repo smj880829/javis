@@ -129,4 +129,3 @@ function check_accessToken_fb(token, callback) {
 };
 
 module.exports = authorization;
-exports.checkLocalToken = checkLocalToken;
