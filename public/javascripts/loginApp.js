@@ -73,7 +73,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         FB.init({
           appId: '706997686105976',
           status: true,
-          cookie: true,
+          cookie: false,
           xfbml: true,
           version: 'v2.7'
         });
