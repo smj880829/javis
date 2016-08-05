@@ -6,16 +6,16 @@ var token_ctl = require('../controller_token')
 
 function authChecker(req, res, next) {
   if(req.cookies.token != null){
-  token_ctl.checkToken(req.cookies.token,function(re){
-    if(re){
-      next();
-    }else{
-      res.redirect('/login')
-      }
-  })
-}else {
-  res.redirect('/login')
-}
+        token_ctl.checkToken(req.cookies.token,function(re){
+          if(re){
+            next();
+          }else{
+            res.redirect('/login')
+          }
+        })
+  }else {
+        res.redirect('/login')
+  }
 
 }
 
@@ -62,7 +62,7 @@ router.post('/login', function(req, res, next) {
     auth.check_user(function(re){
           if(re){
            token_ctl.getNewToken(function(token){
-             res.cookie('token',token,{expires: new Date(Date.now() + 60000),httpOnly: true})
+             res.cookie('token',token,{expires: new Date(Date.now() + 60000),httpOnly: true,maxAge:60000})
              res.send({'token' : token,'check':'true'});
           })
         }else{
