@@ -2,7 +2,7 @@ var jwt = require('jwt-simple');
 
 var secret = 'wow'
 
-function getNewToken(callback){
+exports.getNewToken = function(callback){
   var date = new Date();
   var min = date.getMinutes();
   date.setMinutes(min + 1);
@@ -12,7 +12,7 @@ function getNewToken(callback){
   callback(token)
 }
 
-function checkToken(token,callback){
+exports.checkToken = function(token,callback){
   var date = new Date();
 
   var decoded = jwt.decode(token, secret);
@@ -26,7 +26,3 @@ function checkToken(token,callback){
       callback(false)
       }
 }
-
-
-exports.getNewToken = getNewToken;
-exports.checkToken = checkToken;
