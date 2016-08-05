@@ -21,15 +21,14 @@ router.get('/profile' , function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
   console.log(req.headers)
-    var date = new Date();
+  authorization.checkLocalToken(req.headers.token,function(re){
+    if(re){
+      res.render('test');
+    }else{
+      res.render('login_error');
+      }
+  })
 
-    var decoded = jwt.decode(req.headers.token, 'wow');
-    console.log(decoded)
-      //console.log(decoded); //=> { foo: 'bar' }
-      if(date > decoded.expiration)
-          res.render('test');
-      else
-        res.render('login_error');
 });
 
 router.get('/main' , function(req, res, next) {
