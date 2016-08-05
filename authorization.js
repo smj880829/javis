@@ -82,7 +82,7 @@ function getLocalToken(callback){
   callback(token)
 }
 
-authorization.prototype.checkLocalToken = function(inputToken,callback){
+function checkLocalToken(inputToken,callback){
   var date = new Date();
   console.log(inputToken)
   var decoded = jwt.decode(inputToken, secret);
@@ -127,3 +127,4 @@ function check_accessToken_fb(token, callback) {
 };
 
 module.exports = authorization;
+exports.checkLocalToken = checkLocalToken;
