@@ -2,7 +2,7 @@ var jwt = require('jwt-simple');
 var db = require('./MongoConnector/DAO')
 
 var app_access_token = '706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
-
+var secret = 'wow';
 var authorization = function(meth) {        //생성자 선언
     this.method =  meth;
   this.email = ''
@@ -11,7 +11,7 @@ var authorization = function(meth) {        //생성자 선언
   this.localtoken = ''
   this.id = ''
   this.name = ''
-  this.secret = 'wow';
+
   console.log("new ok");
 
   this.email = function(input){
@@ -53,7 +53,7 @@ authorization.prototype.check_user = function(callback){
                         check = re;
                         console.log(check)
                         if(check){
-                          this.getLocalToken(function(re){
+                          getLocalToken(function(re){
                             callback(re);
                           })
                         }
@@ -72,13 +72,13 @@ function check_localuser(callback){
 
 }
 
-authorization.prototype.getLocalToken = function(callback){
+function getLocalToken(callback){
   var date = new Date();
   var min = date.getMinutes();
   date.setMinutes(min + 1);
   var payload = { 'email' : this.email, 'expiration':date };
   console.log(this.secret)
-  var token = jwt.encode(payload, this.secret);
+  var token = jwt.encode(payload, secret);
   callback(token)
 }
 
