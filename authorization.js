@@ -53,7 +53,7 @@ authorization.prototype.check_user = function(callback){
                         check = re;
                         console.log(check)
                         if(check){
-                          getLocalToken(function(re){
+                          this.getLocalToken(function(re){
                             callback(re);
                           })
                         }
