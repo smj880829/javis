@@ -22,7 +22,7 @@ router.get('/profile' , function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
   console.log('test')
-  token_ctl.getNewToken(req.headers.token,function(re){
+  token_ctl.checkToken(req.headers.token,function(re){
     console.log('callback')
     if(re){
       res.render('test');
