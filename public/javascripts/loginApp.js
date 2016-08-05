@@ -1,24 +1,59 @@
 var app = angular.module('loginApp', [])
 
 app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',  function($scope, $window,$rootScope,$document,$http) {
-
+  $scope.loginMethod ='';
+  $scope.accessToken ='';
+  $scope.id = ''
+  $scope.name = ''
   $scope.login = function() {
+    $scope.loginMethod = 'nomal';
+  }
 
-    FB.api('/me?fields=id,name,email', function(response) {
-        $window.alert(response.email + $rootScope.accesstoken)
-    });
-    /*
+  $scope.FBlogin = function() {
     FB.login(function(response){
-      var accessToken = response.authResponse.accessToken;
+      $scope.accessToken = response.authResponse.accessToken;
+      $scope.loginMethod = 'facebook';
       if (response.authResponse) {
-             $http.defaults.headers.common.Authorization = accessToken;
-             $http.defaults.headers.common.loginMethod = 'facebook';
+        FB.api('/me?fields=email,name,id', function(res) {
+            $scope.email = res.email;
+            $scope.id = res.id;
+            $scope.name = res.name;
 
-             document.getElementById('loginform').submit()
+            $scope.loginhttp();
+        });
+
+         //$http.defaults.headers.common.Authorization = accessToken;
+         //$http.defaults.headers.common.loginMethod = 'facebook';
+
       } else {
 
       }
-    });*/
+    });
+
+
+  }
+
+  $scope.loginhttp = function() {
+    $http({
+    method: 'POST' ,
+    url: '/login',
+    data: $.param({
+        loginmethod: $scope.loginMethod,
+        accesstoken: $scope.accessToken,
+        email: $scope.email,
+        password : $scope.password,
+        id : $scope.id,
+        name : $scope.name
+    }),
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+    }
+    }).success(function(response) {
+        $window.alert(response.data.token)
+    }).finally(function() {
+        console.log('Complete');
+    });
+
   }
 
 }]
@@ -32,13 +67,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         if (response.status === 'connected') {
           $rootScope.accesstoken = response.authResponse.accessToken;
         } else if (response.status === 'not_authorized') {
-          FB.login(function(res){
-            $rootScope.accesstoken = res.authResponse.accessToken;
-          })
         } else {
-          FB.login(function(res){
-            $rootScope.accesstoken = res.authResponse.accessToken;
-          })
         }
       }
 

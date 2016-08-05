@@ -5,11 +5,11 @@ block content
       .container
         h1= title
         form.form(name='loginform',id='loginform')
-          input(type='text', placeholder='Username', name='email')
-          input(type='password', placeholder='Password', name='password')
-          button#login-button(type='submit') Login
+          input(type='text', placeholder='Username', name='email',ng-model='email')
+          input(type='password', placeholder='Password', name='password',ng-model='password')
+          button#login-button(ng-click='login()') Login
           br
-          button(ng-click='login()') FaceBook Login
+          button(ng-click='FBlogin()') FaceBook Login
           br
           button(onclick='FB.logout()') FaceBook Logout
     ul.bg-bubbles

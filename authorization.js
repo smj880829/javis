@@ -1,16 +1,86 @@
+var jwt = require('jwt-simple');
+var db = require('./MongoConnector/DAO')
+
 var app_access_token = '706997686105976|0OZJHFqBqsK_7aGn_Mw_3ETQ2dM'
 
+var authorization = function(meth) {        //생성자 선언
+    this.method =  meth;
+  this.email = ''
+  this.pass = ''
+  this.externaltoken = ''
+  this.localtoken = ''
+  this.id = ''
+  this.name = ''
+  this.secret = 'wow';
+}
 
-function access_check(method,token, callback) {
-  if(method=='facebook'){
-    check_accessToken_fb(token,function(re){
-      callback(re)
+authorization.prototype.email = function(input){
+	this.email = input;
+};
+
+authorization.prototype.pass = function(input){
+	this.pass = input;
+};
+
+authorization.prototype.token = function(input){
+	this.externaltoken = input;
+};
+
+authorization.prototype.id = function(input){
+	this.id = input;
+};
+
+authorization.prototype.name = function(input){
+	this.name = input;
+};
+
+function check_user(callback){
+  console.log(method + email)
+  var check = false;
+  switch (method) {
+    case 'nomal'    :
+                 break;
+    case 'facebook'   : check_accessToken_fb(externaltoken,function(re){ check = re })
+                 break;
+    default    : callback(false)
+                 break;
+  }
+
+  if(check){
+    getLocalToken(function(re){
+      callback(re);
     })
   }
   else {
-    callback(false)
+      callback(null);
   }
-};
+}
+
+function check_localuser(callback){
+
+}
+
+function getLocalToken(callback){
+  var date = new Date();
+  var min = date.getMinutes();
+  date.setMinutes(min + 1);
+  var payload = { 'email' : this.email, 'expiration':date };
+
+  var token = jwt.encode(payload, secret);
+  callback(token)
+}
+
+function checkLocalToken(inputToken,callback){
+  var date = new Date();
+
+  var decoded = jwt.decode(inputToken, secret);
+    //console.log(decoded); //=> { foo: 'bar' }
+    if(date > decoded.expiration)
+      callback(true)
+    else
+      callback(false)
+
+}
 
 /*
 function get_app_access_token(){
@@ -44,4 +114,5 @@ function check_accessToken_fb(token, callback) {
   });
 };
 
-exports.access_check = access_check;
+module.exports = authorization;
+exports.check_user = check_user;

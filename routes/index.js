@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var auth = require('../authorization')
+var authorization = require('../authorization')
 
 
 
@@ -34,11 +34,11 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-  if(req.body.email == '123' &&  req.body.password == '123'){
-    res.redirect('/');
-  }else {
-    res.render('login',{title:'잘못된 계정입니다 ㅠ.'});
-  }
+    var auth = new authorization(req.body.loginmethod).email(req.body.email).pass(req.body.password).token(req.body.accesstoken).id(req.body.id).name(req.body.name)
+    var token = auth.check_user();
+    console.log(token);
+
+    res.send({'token' : token});
 });
 
 router.get('/logout', function(req, res, next) {

@@ -2,10 +2,6 @@ var io =  require('socket.io')();
 var db = require('./MongoConnector/DAO')
 var conf = require('./MongoConnector/Conf')
 
-var LocalStorage = require('node-localstorage').LocalStorage,
-localStorage = new LocalStorage('./');
-
-
 module.exports = function(options) {
   io.attach(options,{origins:conf.ip +':* http://' + conf.ip +':*'});
   //io.attach(options);
@@ -18,9 +14,7 @@ io.on('connection', function (socket) {
     console.log('user disconnected');
   });
 
-  socket.on('check_storage', function(){
-      console.log(localStorage.wow);
-  });
+
 
   socket.on('login', function(data){
     db.findOne('userData',{'id':data.id},function(re){
