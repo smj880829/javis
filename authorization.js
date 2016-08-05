@@ -17,23 +17,27 @@ var authorization = function(meth) {        //생성자 선언
 
 authorization.prototype.email = function(input){
 	this.email = input;
-  console.log("email");
+  return this;
 };
 
 authorization.prototype.pass = function(input){
 	this.pass = input;
+  return this;
 };
 
 authorization.prototype.token = function(input){
 	this.externaltoken = input;
+  return this;
 };
 
 authorization.prototype.id = function(input){
 	this.id = input;
+  return this;
 };
 
 authorization.prototype.name = function(input){
 	this.name = input;
+  return this;
 };
 
 function check_user(callback){
