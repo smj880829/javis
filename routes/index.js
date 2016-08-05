@@ -3,7 +3,7 @@ var router = express.Router();
 var authorization = require('../authorization')
 var token_ctl = require('../controller_token')
 
-
+  var auth = new authorization()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -21,16 +21,13 @@ router.get('/profile' , function(req, res, next) {
 });
 
 router.get('/test', function(req, res, next) {
-  console.log('test')
   token_ctl.checkToken(req.headers.token,function(re){
-    console.log('callback')
     if(re){
       res.render('test');
     }else{
       res.render('login_error');
       }
   })
-  console.log('end')
 });
 
 router.get('/main' , function(req, res, next) {
@@ -43,7 +40,7 @@ router.get('/login', function(req, res, next) {
 });
 
 router.post('/login', function(req, res, next) {
-    var auth = new authorization()
+
     auth.method(req.body.loginmethod)
     .email(req.body.email)
     .pass(req.body.password)

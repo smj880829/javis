@@ -3,7 +3,6 @@ var jwt = require('jwt-simple');
 var secret = 'wow'
 
 exports.getNewToken = function(callback){
-  console.log('in')
   var date = new Date();
   var min = date.getMinutes();
   date.setMinutes(min + 1);
