@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var authorization = require('../authorization')
+var token_ctl = require('../controller_token')
 
 
 
@@ -22,7 +23,7 @@ router.get('/profile' , function(req, res, next) {
 router.get('/test', function(req, res, next) {
 
   var auth = new authorization()
-  auth.checkLocalToken(req.headers.token,function(re){
+  token_ctl.getNewToken(req.headers.token,function(re){
     if(re){
       res.render('test');
     }else{
@@ -48,14 +49,14 @@ router.post('/login', function(req, res, next) {
     .token(req.body.accesstoken)
     .id(req.body.id)
     .name(req.body.name)
-    
-    var token = '';
+
     auth.check_user(function(re){
-          if(re != null){
-          token = re
-          res.send({'token' : token,'check':'ok'});
+          if(re){
+           token_ctl.getNewToken(function(token){
+             res.send({'token' : token,'check':'true'});
+          })
         }else{
-            res.send({'check':'on'});
+            res.send({'check':'false'});
         }
     });
 });

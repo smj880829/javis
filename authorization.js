@@ -52,16 +52,7 @@ authorization.prototype.check_user = function(callback){
                  break;
     case 'facebook'   :
                   check_accessToken_fb(this.externaltoken,function(re){
-                        check = re;
-                        console.log(check)
-                        if(check){
-                          getLocalToken(function(re){
                             callback(re);
-                          })
-                        }
-                        else {
-                            callback(null);
-                        }
                   })
                  break;
     default    :

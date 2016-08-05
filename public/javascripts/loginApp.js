@@ -43,7 +43,7 @@ function($scope, $window,$rootScope,$document,$http) {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
     }).success(function(response) {
-      if(response.check == 'ok'){
+      if(response.check == 'true'){
         localStorage.setItem("localtoken", response.token);
         $window.location.href = '/';
       }else{
