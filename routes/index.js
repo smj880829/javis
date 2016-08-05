@@ -22,7 +22,6 @@ router.get('/profile' , function(req, res, next) {
 
 router.get('/test', function(req, res, next) {
 
-  var auth = new authorization()
   token_ctl.getNewToken(req.headers.token,function(re){
     if(re){
       res.render('test');
