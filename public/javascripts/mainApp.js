@@ -35,7 +35,8 @@ app.config(['$routeProvider','$locationProvider',function ($routeProvider,$locat
  }]
  )
 
-app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
+app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',
+ function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
 
   $scope.chatgotoBottom = function() {
@@ -52,7 +53,8 @@ app.controller('navCtl',['$scope', '$window','$http','socket','$log','$anchorScr
 }]
 )
 
-app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
+app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorScroll','$location','$rootScope',
+function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
     $scope.chat_logs = [];
 
     $scope.gotoBottom = function() {
@@ -109,7 +111,8 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
 }]
 )
 
-  app.run(['$rootScope', '$window','$http','$location',function($rootScope, $window,$http,$location) {
+  app.run(['$rootScope', '$window','$http','$location',
+  function($rootScope, $window,$http,$location) {
     $rootScope.chat_show = false;
     $rootScope.nav_show = true;
 

@@ -1,6 +1,7 @@
 var app = angular.module('loginApp', [])
 
-app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',  function($scope, $window,$rootScope,$document,$http) {
+app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
+function($scope, $window,$rootScope,$document,$http) {
   $scope.loginMethod ='';
   $scope.accessToken ='';
   $scope.id = ''
@@ -73,7 +74,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         FB.init({
           appId: '706997686105976',
           status: true,
-          cookie: false,
+          cookie: true,
           xfbml: true,
           version: 'v2.7'
         });
