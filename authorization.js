@@ -13,33 +13,36 @@ var authorization = function(meth) {        //생성자 선언
   this.name = ''
   this.secret = 'wow';
   console.log("new ok");
+
+  this.email = function(input){
+    console.log("1.5");
+  	this.email = input;
+    return this;
+  };
+
+  this.pass = function(input){
+  	this.pass = input;
+    return this;
+  };
+
+  this.token = function(input){
+  	this.externaltoken = input;
+    return this;
+  };
+
+  this.id = function(input){
+  	this.id = input;
+    return this;
+  };
+
+  this.name = function(input){
+  	this.name = input;
+    return this;
+  };
+
 }
 
-authorization.prototype.email = function(input){
-  console.log("1.5");
-	this.email = input;
-  return this;
-};
 
-authorization.prototype.pass = function(input){
-	this.pass = input;
-  return this;
-};
-
-authorization.prototype.token = function(input){
-	this.externaltoken = input;
-  return this;
-};
-
-authorization.prototype.id = function(input){
-	this.id = input;
-  return this;
-};
-
-authorization.prototype.name = function(input){
-	this.name = input;
-  return this;
-};
 
 function check_user(callback){
   console.log(method + email)
