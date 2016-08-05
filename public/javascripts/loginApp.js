@@ -1,4 +1,4 @@
-var app = angular.module('loginApp', [])
+var app = angular.module('loginApp', ['ngCookies'])
 
 app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http','$cookies',
 function($scope, $window,$rootScope,$document,$http,$cookies) {
