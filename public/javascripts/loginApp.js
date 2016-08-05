@@ -42,7 +42,8 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
     }
     }).success(function(response) {
-        $window.alert(response.token)
+        localStorage.setItem("localtoken", response.token);
+        $window.location.href = '/';
     }).finally(function() {
         console.log('Complete');
     });

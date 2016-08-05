@@ -108,6 +108,8 @@ app.controller('chatCtl',['$scope', '$window','$http','socket','$log','$anchorSc
 
     $rootScope.$emit("init_chat", {});
 
+    $http.defaults.headers.common.token = localStorage.localtoken;
+
   }]);
 
   app.factory('socket', function ($rootScope) {
