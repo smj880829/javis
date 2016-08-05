@@ -32,9 +32,13 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         if (response.status === 'connected') {
           $rootScope.accesstoken = response.authResponse.accessToken;
         } else if (response.status === 'not_authorized') {
-          FB.login()
+          FB.login(function(res){
+            $rootScope.accesstoken = res.authResponse.accessToken;
+          })
         } else {
-          FB.login()
+          FB.login(function(res){
+            $rootScope.accesstoken = res.authResponse.accessToken;
+          })
         }
       }
 
