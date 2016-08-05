@@ -8,6 +8,7 @@ var token_ctl = require('../controller_token')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //req.headers.authorization
+  console.log(req.cookies.token)
     res.render('index');
 });
 
@@ -51,6 +52,7 @@ router.post('/login', function(req, res, next) {
     auth.check_user(function(re){
           if(re){
            token_ctl.getNewToken(function(token){
+             res.cookie('token',token,{expires: new Date(Date.now() + 60000),httpOnly: true}
              res.send({'token' : token,'check':'true'});
           })
         }else{
