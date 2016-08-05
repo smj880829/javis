@@ -5,6 +5,7 @@ var token_ctl = require('../controller_token')
 
 
 function authChecker(req, res, next) {
+  console.log(req.cookies)
   token_ctl.checkToken(req.cookies.token,function(re){
     if(re){
       next();
