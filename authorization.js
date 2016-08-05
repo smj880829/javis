@@ -124,8 +124,12 @@ function check_accessToken_fb(token, callback) {
     res.setEncoding('utf8');
     res.on('data', (chunk) => {
         var temp = JSON.parse(chunk)
-        console.log(temp)
-        callback(temp.data.is_valid)
+        if(temp.data){
+          callback(temp.data.is_valid)
+          }
+          else{
+            callback(false)
+          }
     }).on('error', (e) => {
       console.log(`auth error`);
       callback(false)
