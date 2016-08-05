@@ -123,4 +123,3 @@ function check_accessToken_fb(token, callback) {
 };
 
 module.exports = authorization;
-exports.check_user = check_user;
