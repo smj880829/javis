@@ -4,6 +4,10 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
 
   $scope.login = function() {
 
+    FB.api('/me?fields=id,name,email', function(response) {
+        $window.alert(response.me.email)
+    });
+    /*
     FB.login(function(response){
       var accessToken = response.authResponse.accessToken;
       if (response.authResponse) {
@@ -14,7 +18,7 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
       } else {
 
       }
-    });
+    });*/
   }
 
 }]
@@ -27,9 +31,9 @@ app.controller('loginCtl',['$scope', '$window','$rootScope','$document','$http',
         if (response.status === 'connected') {
           //$window.location.href = "/";
         } else if (response.status === 'not_authorized') {
-
+          FB.login()
         } else {
-
+          FB.login()
         }
       }
 
