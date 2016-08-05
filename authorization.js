@@ -48,20 +48,24 @@ authorization.prototype.check_user = function(callback){
   switch (this.method) {
     case 'nomal'    :
                  break;
-    case 'facebook'   : check_accessToken_fb(this.externaltoken,function(re){ check = re })
+    case 'facebook'   :
+                  check_accessToken_fb(this.externaltoken,function(re){
+                        check = re;
+                        console.log(check)
+                        if(check){
+                          getLocalToken(function(re){
+                            callback(re);
+                          })
+                        }
+                        else {
+                            callback(null);
+                        }
+                  })
                  break;
     default    :
                  break;
   }
-  console.log(check)
-  if(check){
-    getLocalToken(function(re){
-      callback(re);
-    })
-  }
-  else {
-      callback(null);
-  }
+
 }
 
 function check_localuser(callback){
