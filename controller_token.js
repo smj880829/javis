@@ -25,3 +25,9 @@ exports.checkToken = function(token,callback){
       callback(false)
       }
 }
+
+exports.getTokenData = function(token,callback){
+  var decoded = jwt.decode(token, secret);
+
+  callback(decoded)
+}
