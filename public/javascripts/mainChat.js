@@ -5,6 +5,7 @@ function($rootScope, $window,$http) {
   $http.defaults.headers.common.token = localStorage.localtoken;
 
   $rootScope.roomlist = [];
+  $rootScope.selectroom;
 
 }]);
 
