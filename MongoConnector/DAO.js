@@ -15,7 +15,7 @@ function find(col,filter,callback){
       }
       else {
         callback({'isempty':true})
-        
+      }
 })
 }
 
