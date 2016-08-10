@@ -18,22 +18,19 @@ html, body {height:100%}
 }
 
 .mid{
-  height : 90%;
+  height : 80%;
   background-color : red;
-  position:relative;
 }
 
 
 .sub {
-  height : 90%;
+  height : 80%;
   background-color : green;
 }
 
 .bot{
-  bottom:0px;
   height : 10%;
   background-color : yellow;
-  position:absolute;
 }
 
 
