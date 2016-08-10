@@ -21,6 +21,13 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
 }]
 )
 
+app.controller('chatCtl',['$scope','$window', '$http', 'socket','$log', '$anchorScroll', '$location','$rootScope',
+ function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
+
+
+}]
+)
+
 app.factory('socket', function ($rootScope) {
   var socket = io.connect('http://54.199.240.31/');
   return {
