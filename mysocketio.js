@@ -49,4 +49,9 @@ io.on('connection', function (socket) {
     })
   })
 
+  //chat
+  socket.on('initRoomList', function(data){
+      socket.emit('initRoomList', re);
+  })
+
 })
