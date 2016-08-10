@@ -1,0 +1,19 @@
+doctype html
+html(ng-app='mainApp')
+  head
+    title Main
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js')
+    script(type='text/javascript', src='/javascripts/bootstrap/dist/js/bootstrap.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js')
+    script(type='text/javascript', src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-cookies.js')
+    script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+    script(type='text/javascript', src='/javascripts/mainChat.js')
+    script(type='text/javascript', src='/javascripts/angularjs/angular-route.js')
+    script(type='text/javascript', src='/javascripts/ng-scrollable.min.js')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='/stylesheets/ng-scrollable.min.css', rel='stylesheet')
+
+  body
+    block content

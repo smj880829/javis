@@ -20,6 +20,14 @@ html(ng-app='loginApp')
       $('.wrapper').addClass('form-success');
       // setTimeout("next()", 5000);
       });
+
+      $("#fb-button").click(function(event){
+      event.preventDefault();
+      $("#title").html("Login.....");
+      $('form').fadeOut(500);
+      $('.wrapper').addClass('form-success');
+
+      });
       });
   body(ng-controller='loginCtl')
     block content
