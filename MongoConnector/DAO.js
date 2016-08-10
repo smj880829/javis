@@ -17,6 +17,7 @@ function find(col,filter,callback){
         callback({'isempty':true})
       }
 })
+})
 }
 
 function findOne(col,filter,callback){
