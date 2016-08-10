@@ -5,10 +5,17 @@ function find(col,filter,callback){
   mongo.connect(db_Config.url,function(err,db){
     if (err) throw err
     var dbCol = db.collection(col)
-    dbCol.find(filter).toArray(function(err, docs) {
+    dbCol.find(filter,function(err, docs) {
       if (err) throw err
       db.close()
-      callback(docs)})
+
+      if(docs){
+        docs.isempty = false
+        callback(docs)
+      }
+      else {
+        callback({'isempty':true})
+        
 })
 }
 

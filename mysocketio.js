@@ -52,8 +52,9 @@ io.on('connection', function (socket) {
   //chat
   socket.on('initRoomList', function(data){
     db.find('main_chat',{'type':'roomlist'},function(re){
-      console.log(re.list);
-      socket.emit('initRoomList', re);
+      console.log(re);
+      if(!re.isempty)
+        socket.emit('initRoomList', re);
     })
   })
 
