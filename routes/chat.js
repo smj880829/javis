@@ -22,7 +22,7 @@ function authChecker(req, res, next) {
 /* GET home page. */
 router.get('/',authChecker, function(req, res, next) {
   //req.headers.authorization
-    res.render('index');
+    res.render('/main_chat/index');
 });
 
 
