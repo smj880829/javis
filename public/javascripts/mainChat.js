@@ -1,6 +1,6 @@
 var app = angular.module('mainChat',  ['ngRoute','ngAnimate','ngScrollable','ngCookies'])
 
-app.run(['$rootScope', '$window','$http'
+app.run(['$rootScope', '$window','$http',
 function($rootScope, $window,$http) {
   $http.defaults.headers.common.token = localStorage.localtoken;
 
