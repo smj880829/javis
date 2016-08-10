@@ -1,4 +1,5 @@
 .left{
+  border : 2px;
    background : url('/images/pas.jpg');
    background-size: 100% 100%;
    background-repeat: no-repeat;
