@@ -12,7 +12,7 @@ function($rootScope, $window,$http) {
 app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchorScroll', '$location','$rootScope',
  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
-
+   socket.emit('initRoomList');
    socket.on('initRoomList', function (data) {
      //룸 리스트 init
      $rootScope.roomlist = data.list
