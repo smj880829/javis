@@ -22,6 +22,12 @@ html, body {height:100%}
   background-color : red;
 }
 
+
+.sub {
+  height : 80%;
+  background-color : green;
+}
+
 .bot{
   height : 10%;
   background-color : yellow;
