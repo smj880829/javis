@@ -9,6 +9,7 @@ var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var chat = require('./routes/chat');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(session({secret: 'smj',
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/chat',chat)
 
 app.use(function(req, res, next) {
     //모든 도메인의 요청을 허용하지 않으면 웹브라우저에서 CORS 에러를 발생시킨다.

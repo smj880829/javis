@@ -75,9 +75,5 @@ router.get('/logout', function(req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
-router.get('/chat', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 
 module.exports = router;
