@@ -32,3 +32,51 @@ html, body {height:100%}
   height : 10%;
   background-color : yellow;
 }
+
+
+
+
+.ani-repeat.ng-enter {
+  -webkit-animation: 1s opacity-insert-animation;
+  animation: 1s opacity-insert-animation;
+}
+
+.ani-repeat.ng-leave {
+  -webkit-animation: 1s  opacity-dim-animation;
+  animation: 1s  opacity-dim-animation;
+}
+
+.ani-repeat.ng-move {
+  -webkit-animation: 1s opacity-bright-animation;
+  animation: 1s opacity-bright-animation;
+}
+
+@keyframes opacity-bright-animation {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@-webkit-keyframes opacity-bright-animation {
+  from { opacity:0; }
+  to { opacity:1; }
+}
+
+@keyframes opacity-dim-animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@-webkit-keyframes opacity-dim-animation {
+  from { opacity:1; }
+  to { opacity:0; }
+}
+
+@keyframes opacity-insert-animation {
+  from { transform: scale(1.2,1.2); }
+  to { transform: scale(1,1); }
+}
+
+@-webkit-keyframes opacity-insert-animation {
+  from { transform: scale(1.2,1.2); }
+  to { transform: scale(1,1); }
+}

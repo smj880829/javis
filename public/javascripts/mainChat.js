@@ -15,7 +15,7 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
 
    socket.on('initRoomList', function (data) {
      //룸 리스트 init
-     $rootScope.roomlist = data
+     $rootScope.roomlist = data.list
    });
 
 }]
