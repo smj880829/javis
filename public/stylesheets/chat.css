@@ -1,5 +1,9 @@
-.left_menu{
+
+.main_chat{
     height: 100%;
+}
+
+.left_menu{
    background : url('/images/pas.jpg');
    background-repeat:no-repeat;
    background-size: 100% 100%;

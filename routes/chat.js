@@ -20,7 +20,7 @@ function authChecker(req, res, next) {
 
 
 /* GET home page. */
-router.get('/',authChecker, function(req, res, next) {
+router.get('/', function(req, res, next) {
   //req.headers.authorization
     res.render('main_chat/index');
 });
