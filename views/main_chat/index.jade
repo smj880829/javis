@@ -3,7 +3,7 @@ extends layout
 block content
   .col-md-2.left(ng-controller='roomCtl',ng-scrollable="{scrollX:'none'}")
     .ani-repeat(ng-repeat='n in roomlist')
-      a(ng-click='joinRoom("{{n}}")') {{n}}
+      a(ng-click='joinRoom({{n}})') {{n}}
   .col-md-10.right(ng-controller='chatCtl')
    .col-md-12.top
    .col-md-10.mid(ng-scrollable="{scrollX:'none'}")
