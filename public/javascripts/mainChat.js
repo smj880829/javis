@@ -6,7 +6,7 @@ function($rootScope, $window,$http) {
 
   $rootScope.roomlist = [];
   $rootScope.selectroom;
-  $rootScope.chatLogs = {};
+  $rootScope.chatLogs = [];
 
 }]);
 
@@ -29,8 +29,9 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
      socket.emit('createRoom',name);
    }
 
-   $scope.joinRoom = function() {
-     socket.emit('joinRoom');
+   $scope.joinRoom = function(room) {
+     $rootScope.selectroom = room;
+     socket.emit('joinRoom',room);
    }
 
 }]
@@ -39,18 +40,24 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
 app.controller('chatCtl',['$scope','$window', '$http', 'socket','$log', '$anchorScroll', '$location','$rootScope',
  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
-   socket.emit('initChatLogs');
+   //socket.emit('initChatLogs');
    socket.on('initChatLogs', function (data) {
      //룸 리스트 init
      $rootScope.chatLogs = data;
    });
 
-   $scope.insertChatLog = function(log) {
-     socket.emit('insertChatLog',{'message' : $scope.message,'user':localStorage.getItem('email')});
+   $scope.insertChatLog = function() {
+     var temp = {'message' : $scope.message,'user':localStorage.getItem('email'),'room':$rootScope.selectroom}
+     socket.emit('insertChatLog',temp);
+     $rootScope.chatLogs.push(temp)
    }
 
    socket.on('insertChatLog', function (data) {
      $rootScope.chatLogs = data;
+   });
+
+   socket.on('newChatLog', function (data) {
+     $rootScope.chatLogs.push(data)
    });
 
 }]

@@ -3,10 +3,12 @@ extends layout
 block content
   .col-md-2.left(ng-controller='roomCtl',ng-scrollable="{scrollX:'none'}")
     .ani-repeat(ng-repeat='n in roomlist')
-      a {{n}}
+      a(ng-click='joingRoom({{n}})') {{n}}
   .col-md-10.right(ng-controller='chatCtl')
    .col-md-12.top
-   .col-md-10.mid
+   .col-md-10.mid(ng-scrollable="{scrollX:'none'}")
+    .ani-repeat(ng-repeat='log in chatLogs')
+      .log {{log.email}} : {{log.message}}
    .col-md-2.sub
    .col-md-12.bot
-    input.form-control.input-lg(type='text',style={'margin-top':'10px'})
+    input.form-control.input-lg(type='text',style={'margin-top':'10px'},ng-model='message',my-enter='insertChatLog()')

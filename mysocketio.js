@@ -57,6 +57,11 @@ io.on('connection', function (socket) {
     })
   })
 
+  socket.on('joinRoom', function(data){
+    console.log('join ' + data)
+    socket.join(data);
+  })
+
   socket.on('initChatLogs', function(data){
     db.find('main_chat',{'type':'logs'},function(re){
       if(!re.isempty)
@@ -65,11 +70,12 @@ io.on('connection', function (socket) {
   })
 
   socket.on('insertChatLog', function(data){
+    console.log(data.message)
     data.type = 'logs'
     data.insert_time = new Date()
     db.insert('main_chat',data,function(re){
     })
-
+    socket.to(data.room).emit('newChatLog',data)
   })
 
 })
