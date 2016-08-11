@@ -47,6 +47,7 @@ function($scope, $window,$rootScope,$document,$http,$cookies) {
     }).success(function(response) {
       if(response.check == 'true'){
         localStorage.setItem("localtoken", response.token);
+        localStorage.setItem("email", response.email);
         $window.location.href = '/';
       }else{
         angular.element('#title').html("다시 시도해주세요");

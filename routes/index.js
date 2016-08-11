@@ -63,7 +63,7 @@ router.post('/login', function(req, res, next) {
           if(re){
            token_ctl.getNewToken(req.body.email,function(token){
              res.cookie('token',token,{expires: new Date(Date.now() + 600000),httpOnly: true,maxAge:600000})
-             res.send({'token' : token,'check':'true'});
+             res.send({'token' : token,'check':'true','email':req.body.email});
           })
         }else{
             res.send({'check':'false'});

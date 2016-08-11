@@ -6,9 +6,16 @@ function find(col,filter,callback){
     if (err) throw err
     var dbCol = db.collection(col)
     dbCol.find(filter).toArray(function(err, docs) {
-      if (err) throw err
-      db.close()
-      callback(docs)})
+          if (err) throw err
+          db.close()
+          if(docs){
+            docs.isempty = false
+            callback(docs)
+          }
+          else {
+            callback({'isempty':true})
+          }
+      })
 })
 }
 

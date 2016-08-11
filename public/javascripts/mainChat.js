@@ -20,8 +20,17 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
      $rootScope.roomlist = data.list
    });
 
+   socket.on('initChatLogs', function (data) {
+     //체팅 초기화
+     $rootScope.chatLogs = data;
+   });
+
    $scope.createRoom = function(name) {
      socket.emit('createRoom',name);
+   }
+
+   $scope.joinRoom = function() {
+     socket.emit('joinRoom');
    }
 
 }]
@@ -37,8 +46,12 @@ app.controller('chatCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
    });
 
    $scope.insertChatLog = function(log) {
-     socket.emit('insertChatLog',log);
+     socket.emit('insertChatLog',{'message' : $scope.message,'user':localStorage.getItem('email')});
    }
+
+   socket.on('insertChatLog', function (data) {
+     $rootScope.chatLogs = data;
+   });
 
 }]
 )

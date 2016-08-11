@@ -65,6 +65,10 @@ io.on('connection', function (socket) {
   })
 
   socket.on('insertChatLog', function(data){
+    data.type = 'logs'
+    data.insert_time = new Date()
+    db.insert('main_chat',data,function(re){
+    })
 
   })
 
