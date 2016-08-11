@@ -51,6 +51,7 @@ app.controller('chatCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
      var temp = {'message' : $scope.message,'user':localStorage.getItem('email'),'room':$rootScope.selectroom}
      socket.emit('insertChatLog',temp);
      $rootScope.chatLogs.push(temp)
+     $scope.message = ""
    }
 
    socket.on('insertChatLog', function (data) {
