@@ -58,7 +58,7 @@ app.controller('chatCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
    });
 
    socket.on('newChatLog', function (data) {
-     $window.alert(data)
+     $window.alert(data.message)
      //$rootScope.chatLogs.push(data)
    });
 
