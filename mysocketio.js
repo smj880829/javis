@@ -73,8 +73,9 @@ io.on('connection', function (socket) {
     console.log(data.message)
     data.type = 'logs'
     data.insert_time = new Date()
+    /*
     db.insert('main_chat',data,function(re){
-    })
+    })*/
     socket.to(data.room).emit('newChatLog',data)
   })
 
