@@ -7,6 +7,7 @@ exports.getNewToken = function(callback){
   var date = new Date();
   var min = date.getMinutes();
   date.setMinutes(min + connectionTime);
+  console.log(this.email)
   var payload = { 'email' : this.email, 'year':date.getFullYear(),'month':date.getMonth(),'date':date.getDate(),'hour':date.getHours(),'minutes':date.getMinutes(),'sec':date.getSeconds() };
   var token = jwt.encode(payload, secret);
   callback(token)

@@ -49,12 +49,23 @@ io.on('connection', function (socket) {
     })
   })
 
-  //chat
+  //main chat
   socket.on('initRoomList', function(data){
     db.find('main_chat',{'type':'roomlist'},function(re){
       if(!re.isempty)
         socket.emit('initRoomList', re[0]);
     })
+  })
+
+  socket.on('initChatLogs', function(data){
+    db.find('main_chat',{'type':'logs'},function(re){
+      if(!re.isempty)
+        socket.emit('initChatLogs', re[0]);
+    })
+  })
+
+  socket.on('insertChatLog', function(data){
+
   })
 
 })

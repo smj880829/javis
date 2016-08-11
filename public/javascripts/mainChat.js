@@ -6,6 +6,7 @@ function($rootScope, $window,$http) {
 
   $rootScope.roomlist = [];
   $rootScope.selectroom;
+  $rootScope.chatLogs = {};
 
 }]);
 
@@ -19,15 +20,29 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
      $rootScope.roomlist = data.list
    });
 
+   $scope.createRoom = function(name) {
+     socket.emit('createRoom',name);
+   }
+
 }]
 )
 
 app.controller('chatCtl',['$scope','$window', '$http', 'socket','$log', '$anchorScroll', '$location','$rootScope',
  function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
 
+   socket.emit('initChatLogs');
+   socket.on('initChatLogs', function (data) {
+     //룸 리스트 init
+     $rootScope.chatLogs = data;
+   });
+
+   $scope.insertChatLog = function(log) {
+     socket.emit('insertChatLog',log);
+   }
 
 }]
 )
+
 
 app.factory('socket', function ($rootScope) {
   var socket = io.connect('http://54.199.240.31/');
