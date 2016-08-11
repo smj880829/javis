@@ -30,6 +30,7 @@ app.controller('roomCtl',['$scope','$window', '$http', 'socket','$log', '$anchor
    }
 
    $scope.joinRoom = function(room) {
+     $window.alert(room)
      $rootScope.selectroom = room;
      socket.emit('joinRoom',room);
    }
