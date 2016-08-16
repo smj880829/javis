@@ -1,7 +1,7 @@
 var jwt = require('jwt-simple');
 
 var secret = 'wow'
-var connectionTime = 30;
+var connectionTime = 1;
 
 exports.getNewToken = function(email,callback){
   var date = new Date();
