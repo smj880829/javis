@@ -13,6 +13,17 @@ function($scope, $window,$rootScope,$document,$http,$cookies) {
 
 
   $scope.FBlogin = function() {
+
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            $rootScope.accesstoken = response.authResponse.accessToken;
+        } else if (response.status === 'not_authorized') {
+          FB.login();
+        } else {
+          FB.login();
+        }
+    });
+
       $scope.accessToken = $rootScope.accesstoken
       $scope.loginMethod = 'facebook';
 
