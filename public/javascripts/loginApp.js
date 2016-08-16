@@ -16,11 +16,15 @@ function($scope, $window,$rootScope,$document,$http,$cookies) {
 
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
-            $rootScope.accesstoken = response.authResponse.accessToken;
+
         } else if (response.status === 'not_authorized') {
-          FB.login();
+          FB.login(function(response){
+            $rootScope.accesstoken = response.authResponse.accessToken;
+          });
         } else {
-          FB.login();
+          FB.login(function(response){
+            $rootScope.accesstoken = response.authResponse.accessToken;
+          });
         }
     });
 
