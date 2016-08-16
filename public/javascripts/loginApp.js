@@ -16,29 +16,46 @@ function($scope, $window,$rootScope,$document,$http,$cookies) {
 
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
+          $scope.accessToken = $rootScope.accesstoken
+          $scope.loginMethod = 'facebook';
 
+            FB.api('/me?fields=email,name,id', function(res) {
+                $scope.email = res.email;
+                $scope.id = res.id;
+                $scope.name = res.name;
+
+                $scope.loginhttp();
+            });
         } else if (response.status === 'not_authorized') {
           FB.login(function(response){
             $rootScope.accesstoken = response.authResponse.accessToken;
+            $scope.accessToken = $rootScope.accesstoken
+            $scope.loginMethod = 'facebook';
+
+              FB.api('/me?fields=email,name,id', function(res) {
+                  $scope.email = res.email;
+                  $scope.id = res.id;
+                  $scope.name = res.name;
+
+                  $scope.loginhttp();
+              });
           });
         } else {
           FB.login(function(response){
             $rootScope.accesstoken = response.authResponse.accessToken;
+            $scope.accessToken = $rootScope.accesstoken
+            $scope.loginMethod = 'facebook';
+
+              FB.api('/me?fields=email,name,id', function(res) {
+                  $scope.email = res.email;
+                  $scope.id = res.id;
+                  $scope.name = res.name;
+
+                  $scope.loginhttp();
+              });
           });
         }
     });
-
-      $scope.accessToken = $rootScope.accesstoken
-      $scope.loginMethod = 'facebook';
-
-        FB.api('/me?fields=email,name,id', function(res) {
-            $scope.email = res.email;
-            $scope.id = res.id;
-            $scope.name = res.name;
-
-            $scope.loginhttp();
-        });
-
          //$http.defaults.headers.common.Authorization = accessToken;
          //$http.defaults.headers.common.loginMethod = 'facebook';
 
