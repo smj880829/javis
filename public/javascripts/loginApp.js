@@ -100,6 +100,7 @@ function($scope, $window,$rootScope,$document,$http,$cookies) {
         console.log(response)
         if (response.status === 'connected') {
           $rootScope.accesstoken = response.authResponse.accessToken;
+          $rootScope.connection = true
         } else if (response.status === 'not_authorized') {
         } else {
         }

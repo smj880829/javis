@@ -59,7 +59,6 @@ authorization.prototype.check_user = function(callback){
     default    :
                  break;
   }
-
 }
 
 /*
