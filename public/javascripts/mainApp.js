@@ -122,7 +122,7 @@ function($scope, $window,$http,socket,$log,$anchorScroll,$location,$rootScope) {
   }]);
 
   app.factory('socket', function ($rootScope) {
-    var socket = io.connect('http://54.199.240.31/');
+    var socket = io.connect('http://52.78.159.114/');
     return {
       on: function (eventName, callback) {
         socket.on(eventName, function () {
